@@ -85,7 +85,7 @@ const ryoroyko = ryoroykoConnect({
         gradient: [randomcolor, randomcolor]
     })
 
-say(`Create By 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒\n𝖂𝖍𝖆𝖙𝖘𝖆𝖕𝖕 𝕲𝖗𝖔𝖚𝖕 : https://chat.whatsapp.com/EPSGKau0IVi7J5lyOJO7Jk`, {
+say(`Create By 𝐆𝐇𝐎𝐒𝐓\n𝖂𝖍𝖆𝖙𝖘𝖆𝖕𝖕 𝕲𝖗𝖔𝖚𝖕 : https://chat.whatsapp.com/E5VG3abaZ0RIJMI1H7I6r3`, {
   font: 'console',
   align: 'center',
   gradient: [randomcolor, randomcolor]
@@ -235,14 +235,14 @@ ryoroyko.setStatus = (status) => {
         align: 'center',
         gradient: [randomcolor, randomcolor]
     })
-    say(`Create By 𝕶𝖎𝖓𝖌 𝕾𝖆𝖒`, {
+    say(`Create By 𝐆𝐇𝐎𝐒𝐓`, {
     font: 'console',
     align: 'center',
     gradient: [randomcolor, randomcolor]
     })
     
 await sleep(30000)
-ryoroyko.sendMessage(`254104301695@s.whatsapp.net`, { text: `❗?𝗚𝘂𝗲𝘀𝘀 𝘄𝗵𝗼 𝗵𝗮𝘀 𝗹𝗼𝘀𝘁 𝗵𝗶𝘀/𝗵𝗲𝗿 𝗠𝗲𝗿𝗰𝘆 💀 𝗟𝗲𝘁𝘀 𝗸𝗶𝗹𝗹 𝘁𝗵𝗲 𝘃𝗶𝗯𝗲𝘀,𝗡𝗼 𝗠𝗲𝗿𝗰𝘆 𝗙𝗼𝗿 𝗧𝗵𝗲 𝗪𝗲𝗮𝗸 👻 `})
+ryoroyko.sendMessage(`255786535571@s.whatsapp.net`, { text: `❗?𝗚𝘂𝗲𝘀𝘀 𝘄𝗵𝗼 𝗵𝗮𝘀 𝗹𝗼𝘀𝘁 𝗵𝗶𝘀/𝗵𝗲𝗿 𝗠𝗲𝗿𝗰𝘆 💀 𝗟𝗲𝘁𝘀 𝗸𝗶𝗹𝗹 𝘁𝗵𝗲 𝘃𝗶𝗯𝗲𝘀,𝗡𝗼 𝗠𝗲𝗿𝗰𝘆 𝗙𝗼𝗿 𝗧𝗵𝗲 𝗪𝗲𝗮𝗸 👻 `})
             }
 
         } catch (err) {
