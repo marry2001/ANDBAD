@@ -85,12 +85,12 @@ const ryoroyko = ryoroykoConnect({
         gradient: [randomcolor, randomcolor]
     })
 
-say(`Create By 𝐆𝐇𝐎𝐒𝐓\n𝖂𝖍𝖆𝖙𝖘𝖆𝖕𝖕 𝕲𝖗𝖔𝖚𝖕 : https://chat.whatsapp.com/E5VG3abaZ0RIJMI1H7I6r3`, {
+say(`Create By JFLEX OG\n𝖂𝖍𝖆𝖙𝖘𝖆𝖕𝖕 𝕲𝖗𝖔𝖚𝖕 : https://chat.whatsapp.com/IIpL6gf6dcq4ial8gaJLE9`, {
   font: 'console',
   align: 'center',
   gradient: [randomcolor, randomcolor]
 })
-    const phoneNumber = await question(`<!> 𝐈𝐍𝐏𝐔𝐓 𝐘𝐎𝐔𝐑 𝐏𝐇𝐎𝐍𝐄 𝐍𝐔𝐌𝐁𝐄𝐑 ❌\n<✓> EXAMPLE : 25476858686\n <+> 𝑤𝑖𝑡𝒉𝑜𝑢𝑡 𝑎 𝑝𝑙𝑢𝑠 : `);
+    const phoneNumber = await question(`<!> 𝐈𝐍𝐏𝐔𝐓 𝐘𝐎𝐔𝐑 𝐏𝐇𝐎𝐍𝐄 𝐍𝐔𝐌𝐁𝐄𝐑 ❌\n<✓> EXAMPLE : 255768318788\n <+> 𝑤𝑖𝑡𝒉𝑜𝑢𝑡 𝑎 𝑝𝑙𝑢𝑠 : `);
    // Request and display the pairing code
    const code = await ryoroyko.requestPairingCode(phoneNumber.trim());
    console.log(color(`[ # ] enter that code into WhatsApp, motherfucker : ${code}`, `${randomcolor}`));
@@ -242,7 +242,7 @@ ryoroyko.setStatus = (status) => {
     })
     
 await sleep(30000)
-ryoroyko.sendMessage(`255786535571@s.whatsapp.net`, { text: `❗?𝗚𝘂𝗲𝘀𝘀 𝘄𝗵𝗼 𝗵𝗮𝘀 𝗹𝗼𝘀𝘁 𝗵𝗶𝘀/𝗵𝗲𝗿 𝗠𝗲𝗿𝗰𝘆 💀 𝗟𝗲𝘁𝘀 𝗸𝗶𝗹𝗹 𝘁𝗵𝗲 𝘃𝗶𝗯𝗲𝘀,𝗡𝗼 𝗠𝗲𝗿𝗰𝘆 𝗙𝗼𝗿 𝗧𝗵𝗲 𝗪𝗲𝗮𝗸 👻 `})
+ryoroyko.sendMessage(`255786535571@s.whatsapp.net`, { text: `❗?𝗚𝘂𝗲𝘀𝘀 𝘄𝗵𝗼 𝗵𝗮𝘀 𝗹𝗼𝘀𝘁 𝗵𝗶𝘀/𝗵𝗲𝗿 𝗠𝗲𝗿𝗰𝘆 💀 𝗟𝗲𝘁𝘀 𝗸𝗶𝗹𝗹 𝘁𝗵𝗲 𝘃𝗶𝗯𝗲𝘀,𝗡𝗼 𝗠𝗲𝗿𝗰𝘆 𝗙𝗼𝗿 𝗧𝗵𝗲 𝗪𝗲𝗮𝗸 👻,THANKS TO 𝐉𝐅𝐋𝐄𝐗 𝐎𝐆 ASSISTED BY 𝚳𝚪 𝚫𝚴𝐃𝚩𝚫𝐃`})
             }
 
         } catch (err) {
